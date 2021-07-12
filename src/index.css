@@ -1,7 +1,7 @@
 @tailwind base;
 @font-face {
   font-family: 'Ubuntu';
-  src: url(./fonts/Ubuntu-Regular.ttf) format('ttf');
+  src: url(./assets/fonts/Ubuntu-Regular.ttf) format('ttf');
 }
 
 @tailwind components;
