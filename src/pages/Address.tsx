@@ -15,12 +15,12 @@ function Address() {
         <div className='text-gray1 text-sm py-2'>
           <p>
             Нажимая кнопку Продолжить Вы соглашаетесь с
-            <a href='#' className='text-orange underline'>
+            <a href='#' className='text-orange1 underline'>
               {' '}
               Условиями продоставления услуги{' '}
             </a>
             и
-            <a href='#' className='text-orange underline'>
+            <a href='#' className='text-orange1 underline'>
               {' '}
               Правилами пользования сервисом
             </a>
