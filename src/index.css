@@ -1,9 +1,13 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(./fonts/Ubuntu-Regular.ttf) format('ttf');
+}
 
+@tailwind components;
 @layer components {
   .btn-orange {
     @apply py-2 w-full px-4 bg-orange text-white font-semibold rounded-md shadow-md  focus:outline-none;
   }
 }
+@tailwind utilities;

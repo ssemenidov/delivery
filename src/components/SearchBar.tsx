@@ -5,7 +5,7 @@ function SearchBar() {
     <div className='py-2'>
       <div className='bg-white flex items-center rounded-md shadow-lg'>
         <input
-          className='rounded w-full py-3 px-6 text-grey  focus:outline-none'
+          className='rounded w-full py-3 px-6 text-gray1  focus:outline-none'
           id='search'
           type='text'
           placeholder='Укажите адрес доставки'
