@@ -67,16 +67,16 @@ function Basket() {
   const deleteCard = (id: String) => {};
   return (
     <div className=' flex flex-col  min-h-screen align-center w-full '>
-      <div className='p-4 md:p-11 '>
-        <div className='py-2 flex'>
-          <div className='mr-4'>
+      <div className='p-4 md:p-11 xl:px-40 '>
+        <div className='py-2 flex items-center'>
+          <div className='mr-4 '>
             <button
               onClick={() => history.goBack()}
-              className='    focus:outline-none'
+              className='    focus:outline-none h-4 w-4 lg:w-6 lg:h-6'
             >
               <svg
-                width='16'
-                height='11'
+                width='100%'
+                height='100%'
                 viewBox='0 0 16 11'
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'

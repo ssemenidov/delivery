@@ -15,16 +15,16 @@ function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
     >
       <div className='flex flex-col  align-center '>
         <div
-          className='min-w-full w-24 h-24  md:w-28 md:h-28 bg-center bg-no-repeat bg-cover rounded-tl-lg'
+          className='min-w-full w-24 h-24  md:w-28 md:h-28 lg:w-40 lg:h-40 bg-center bg-no-repeat bg-cover rounded-tl-lg'
           style={{
             backgroundImage: `url(${url})`,
           }}
         ></div>
-        <div className='py-3 text-gray1 whitespace-nowrap text-sm self-center'>
+        <div className='lg:hidden py-3 text-gray1 whitespace-nowrap text-sm self-center'>
           {mass} гр
         </div>
       </div>
-      <div className='flex justify-around p-3 flex-col'>
+      <div className='flex justify-around p-3 flex-col  lg:h-40'>
         <div className='h-24 md:h-28'>
           <div className='text-black1 text-base font-medium'>{title}</div>
           <div className='text-gray1 text-sm '>{descr}</div>

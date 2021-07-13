@@ -16,7 +16,7 @@ function BasketCard({
     <div className='flex flex-row rounded-xl relative w-full'>
       <div className=' '>
         <div
-          className='min-w-full w-24 h-24  md:w-28 md:h-28   bg-center bg-no-repeat bg-cover rounded-l-lg'
+          className='min-w-full w-24 h-24  md:w-28 md:h-28  lg:w-40 lg:h-40 bg-center bg-no-repeat bg-cover rounded-l-lg'
           style={{
             backgroundImage: `url(${url})`,
           }}
@@ -30,7 +30,7 @@ function BasketCard({
           </div>
         </div>
         <div className='flex flex-row w-full justify-between'>
-          <div className=' text-black1 whitespace-nowrap text-sm self-center'>
+          <div className=' text-black1 whitespace-nowrap text-sm lg:text-base self-center'>
             {mass} гр
           </div>
           <div className='whitespace-nowrap text-orange1 text-base font-medium'>
@@ -39,10 +39,13 @@ function BasketCard({
         </div>
       </div>
       <div className='absolute top-0 right-0'>
-        <button onClick={() => {}} className='p-2 focus:outline-none'>
+        <button
+          onClick={() => {}}
+          className='p-2 focus:outline-none  w-6 h-6 md:w-8 md:h-8  '
+        >
           <svg
-            width='10'
-            height='10'
+            width='100%'
+            height='100%'
             viewBox='0 0 10 10'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
