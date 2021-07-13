@@ -5,7 +5,7 @@ import Menu from './pages/Menu';
 import Basket from './pages/Basket';
 function App() {
   return (
-    <div className='App'>
+    <div className='App '>
       <Router>
         <Switch>
           <Route path='/menu'>

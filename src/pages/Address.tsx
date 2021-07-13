@@ -4,15 +4,15 @@ import {useHistory} from 'react-router';
 function Address() {
   const history = useHistory();
   return (
-    <div className='p-4 flex flex-col justify-between h-screen'>
-      <div className='flex flex-col h-full justify-center align-center text-sm'>
+    <div className='p-4 flex flex-col items-center  justify-center h-screen'>
+      <div className='w-full flex flex-col h-full justify-center  text-sm md:max-w-2xl'>
         <SearchBar />
       </div>
-      <div className='py-4'>
+      <div className='py-4 md:max-w-md md:mb-60'>
         <button className='btn-orange ' onClick={() => history.push('/menu')}>
           Продолжить
         </button>
-        <div className='text-gray1 text-xs py-2'>
+        <div className='text-gray1 text-xs py-2 md:text-center'>
           <p>
             Нажимая кнопку Продолжить Вы соглашаетесь с
             <a href='#' className='text-orange1 underline'>

@@ -60,13 +60,45 @@ const dishes: CardType[] = [
     price: 290,
     mass: 350,
   },
+  {
+    id: '5',
+    title: 'Том Ям',
+    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
+    url: tomYam,
+    price: 290,
+    mass: 350,
+  },
+  {
+    id: '5',
+    title: 'Том Ям',
+    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
+    url: tomYam,
+    price: 290,
+    mass: 350,
+  },
+  {
+    id: '5',
+    title: 'Том Ям',
+    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
+    url: tomYam,
+    price: 290,
+    mass: 350,
+  },
+  {
+    id: '5',
+    title: 'Том Ям',
+    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
+    url: tomYam,
+    price: 290,
+    mass: 350,
+  },
 ];
 function Menu() {
   const history = useHistory();
   const addCard = (id: String) => {};
   return (
-    <div className='pt-4 flex flex-col  min-h-screen align-center w-full relative'>
-      <div className='px-4 pr-0'>
+    <div className='pt-4  flex flex-col  min-h-screen align-center w-full relative'>
+      <div className='px-4 pr-0 md:px-11'>
         <div className=' flex flex-row whitespace-nowrap overflow-x-auto my-4 '>
           {cat.map((value, index) => (
             <div className=' cursor-pointer text-xs bg-gray-100 text-black1 rounded-3xl py-2 px-4 mr-2 hover:bg-orange1 hover:text-white '>
@@ -91,14 +123,14 @@ function Menu() {
           ))}
         </div>
       </div>
-      <div className='px-4 overflow-y-auto'>
+      <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 pb-20 overflow-y-auto'>
         {dishes.map((value, index) => (
-          <div className='mb-6'>
+          <div className=''>
             <Card {...value} addCard={addCard}></Card>
           </div>
         ))}
       </div>
-      <div className='px-4 fixed  bottom-7 w-full'>
+      <div className='px-4 md:px-11  fixed  bottom-7 w-full'>
         <button
           className='btn-orange   py-3 text-sm box-border '
           onClick={() => history.push('/basket')}

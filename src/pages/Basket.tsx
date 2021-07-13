@@ -67,7 +67,7 @@ function Basket() {
   const deleteCard = (id: String) => {};
   return (
     <div className=' flex flex-col  min-h-screen align-center w-full '>
-      <div className='p-4'>
+      <div className='p-4 md:p-11 '>
         <div className='py-2 flex'>
           <div className='mr-4'>
             <button
@@ -90,7 +90,7 @@ function Basket() {
               </svg>
             </button>
           </div>
-          <div className='text-xl font-medium'>Корзина</div>
+          <div className='text-xl md:text-2xl font-medium'>Корзина</div>
         </div>
         <div className='py-2 mb-4'>
           <div className='text-sm bg-white flex items-center rounded-md shadow-lg'>
@@ -105,32 +105,34 @@ function Basket() {
         </div>
         <div className='overflow-y-auto'>
           {dishes.map((value, index) => (
-            <div className='mb-6'>
+            <div className='mb-6 w-full'>
               <BasketCard {...value} deleteCard={deleteCard}></BasketCard>
             </div>
           ))}
         </div>
       </div>
       <div
-        className='sticky bottom-0  text-sm bg-white p-4  rounded-md'
+        className=' sticky bottom-0  text-sm bg-white p-4  rounded-md flex justify-center '
         style={{boxShadow: ' 0px -5px 15px rgba(84, 84, 84, 0.1)'}}
       >
-        <div className='text-black1 flex justify-between'>
-          <div className=''>Итого с доставкой:</div>
-          <div className=''>1168 руб.</div>
+        <div className='md:max-w-md w-full'>
+          <div className='text-black1 flex justify-between '>
+            <div className=''>Итого с доставкой:</div>
+            <div className=''>1168 руб.</div>
+          </div>
+          <div className='text-gray1 flex justify-between mb-5'>
+            <div className=''>Время доставки:</div>
+            <div className=''>≈ 40 мин.</div>
+          </div>
+          <button
+            className='btn-orange mb-4'
+            onClick={() => {
+              alert('Спасибо!');
+            }}
+          >
+            Заказать в Яндекс Еде
+          </button>
         </div>
-        <div className='text-gray1 flex justify-between mb-5'>
-          <div className=''>Время доставки:</div>
-          <div className=''>≈ 40 мин.</div>
-        </div>
-        <button
-          className='btn-orange mb-4'
-          onClick={() => {
-            alert('Спасибо!');
-          }}
-        >
-          Заказать в Яндекс Еде
-        </button>
       </div>
     </div>
   );

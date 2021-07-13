@@ -13,16 +13,16 @@ function BasketCard({
   deleteCard,
 }: BasketCard) {
   return (
-    <div className='flex flex-row rounded-xl relative'>
+    <div className='flex flex-row rounded-xl relative w-full'>
       <div className=' '>
         <div
-          className='min-w-full w-20 h-20  bg-center bg-no-repeat bg-cover rounded-l-lg'
+          className='min-w-full w-20 h-20 md:w-24 md:h-24   bg-center bg-no-repeat bg-cover rounded-l-lg'
           style={{
             backgroundImage: `url(${url})`,
           }}
         ></div>
       </div>
-      <div className='flex justify-between px-3 flex-col h-20 '>
+      <div className='flex justify-between px-3 flex-col h-20  md:h-24 w-full '>
         <div className=''>
           <div className='text-black1 text-sm font-medium pb-1'>{title}</div>
           <div

@@ -9,10 +9,13 @@ function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
     setChecked(!checked);
   };
   return (
-    <div className='flex flex-row rounded-xl shadow-lg'>
+    <div
+      className='flex flex-row rounded-xl '
+      style={{boxShadow: '0px 6px 15px rgba(84, 84, 84, 0.1)'}}
+    >
       <div className='flex flex-col  align-center '>
         <div
-          className='min-w-full w-20 h-20  bg-center bg-no-repeat bg-cover rounded-tl-lg'
+          className='min-w-full w-20 h-20  md:w-24 md:h-24 bg-center bg-no-repeat bg-cover rounded-tl-lg'
           style={{
             backgroundImage: `url(${url})`,
           }}
@@ -22,12 +25,12 @@ function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
         </div>
       </div>
       <div className='flex justify-around p-3 flex-col'>
-        <div className='h-20'>
+        <div className='h-20 md:h-24'>
           <div className='text-black1 text-sm font-medium'>{title}</div>
           <div className='text-gray1 text-xs '>{descr}</div>
         </div>
         <div className='flex flex-row w-full justify-between'>
-          <div className='whitespace-nowrap text-black1 text-sm font-medium'>
+          <div className='whitespace-nowrap text-black1 text-sm md:text-base font-medium'>
             {price} руб.
           </div>
           <div className=''>
