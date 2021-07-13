@@ -97,26 +97,26 @@ function Menu() {
   const history = useHistory();
   const addCard = (id: String) => {};
   return (
-    <div className='pt-4  flex flex-col  min-h-screen align-center w-full relative'>
+    <div className='pt-4  flex flex-col  min-h-screen  w-full relative'>
       <div className='px-4 pr-0 md:px-11'>
         <div className=' flex flex-row whitespace-nowrap overflow-x-auto my-4 '>
           {cat.map((value, index) => (
-            <div className=' cursor-pointer text-xs bg-gray-100 text-black1 rounded-3xl py-2 px-4 mr-2 hover:bg-orange1 hover:text-white '>
+            <div className=' cursor-pointer text-sm bg-gray-100 text-black1 rounded-3xl py-3 px-4 mr-3 hover:bg-orange1 hover:text-white '>
               {value}
             </div>
           ))}
         </div>
-        <div className=' flex flex-row overflow-x-auto mt-1 mb-5'>
+        <div className=' flex flex-row overflow-x-auto  mb-5'>
           {cat_food.map(({title, url}, index) => (
-            <div className=' cursor-pointer w-28  flex flex-col align-center mr-2'>
+            <div className=' cursor-pointer w-36  flex flex-col align-center mr-3'>
               <div
-                className='rounded-xl w-28 h-20  bg-center bg-no-repeat bg-cover '
+                className='rounded-xl w-36 h-24  bg-center bg-no-repeat bg-cover '
                 style={{
                   backgroundImage: `url(${url})`,
                 }}
               ></div>
 
-              <div className='whitespace-normal text-xs text-center '>
+              <div className='whitespace-normal text-sm text-center '>
                 <span>{title}</span>
               </div>
             </div>
@@ -130,9 +130,9 @@ function Menu() {
           </div>
         ))}
       </div>
-      <div className='px-4 md:px-11  fixed  bottom-7 w-full'>
+      <div className='px-4 md:px-11 flex   justify-center fixed  bottom-7 w-full'>
         <button
-          className='btn-orange   py-3 text-sm box-border '
+          className='btn-orange   py-3 text-sm box-border  md:max-w-md'
           onClick={() => history.push('/basket')}
         >
           Оформить заказ

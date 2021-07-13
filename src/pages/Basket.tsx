@@ -90,10 +90,10 @@ function Basket() {
               </svg>
             </button>
           </div>
-          <div className='text-xl md:text-2xl font-medium'>Корзина</div>
+          <div className='text-2xl md:text-3xl font-medium'>Корзина</div>
         </div>
         <div className='py-2 mb-4'>
-          <div className='text-sm bg-white flex items-center rounded-md shadow-lg'>
+          <div className='text-base bg-white flex items-center rounded-md shadow-lg'>
             <input
               className='rounded w-full py-3 px-6 text-gray1  focus:outline-none'
               id='search'
@@ -112,7 +112,7 @@ function Basket() {
         </div>
       </div>
       <div
-        className=' sticky bottom-0  text-sm bg-white p-4  rounded-md flex justify-center '
+        className=' sticky bottom-0  text-base bg-white p-4  rounded-md flex justify-center '
         style={{boxShadow: ' 0px -5px 15px rgba(84, 84, 84, 0.1)'}}
       >
         <div className='md:max-w-md w-full'>

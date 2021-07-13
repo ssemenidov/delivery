@@ -16,27 +16,24 @@ function BasketCard({
     <div className='flex flex-row rounded-xl relative w-full'>
       <div className=' '>
         <div
-          className='min-w-full w-20 h-20 md:w-24 md:h-24   bg-center bg-no-repeat bg-cover rounded-l-lg'
+          className='min-w-full w-24 h-24  md:w-28 md:h-28   bg-center bg-no-repeat bg-cover rounded-l-lg'
           style={{
             backgroundImage: `url(${url})`,
           }}
         ></div>
       </div>
-      <div className='flex justify-between px-3 flex-col h-20  md:h-24 w-full '>
+      <div className='flex justify-between px-3 flex-col h-24  md:h-28 w-full '>
         <div className=''>
-          <div className='text-black1 text-sm font-medium pb-1'>{title}</div>
-          <div
-            className='text-gray1 text-xs  overflow-y-hidden'
-            style={{fontSize: '10px', lineHeight: '11px'}}
-          >
+          <div className='text-black1 text-base font-medium pb-1'>{title}</div>
+          <div className='text-gray1 text-xs md:text-sm  overflow-y-hidden'>
             {descr}
           </div>
         </div>
         <div className='flex flex-row w-full justify-between'>
-          <div className=' text-black1 whitespace-nowrap text-xs self-center'>
+          <div className=' text-black1 whitespace-nowrap text-sm self-center'>
             {mass} гр
           </div>
-          <div className='whitespace-nowrap text-orange1 text-sm font-medium'>
+          <div className='whitespace-nowrap text-orange1 text-base font-medium'>
             {price} руб.
           </div>
         </div>
