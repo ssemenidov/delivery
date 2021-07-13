@@ -6,6 +6,7 @@ import tomYam from '../assets/img/tom-yam.png';
 
 import {CardType} from '../interfaces';
 import Card from '../components/Card';
+import {useHistory} from 'react-router-dom';
 
 const cat = ['самое быстрое', 'самое доступное', 'высший рейтинг'];
 const cat_food = [
@@ -19,6 +20,7 @@ const cat_food = [
 ];
 const dishes: CardType[] = [
   {
+    id: '1',
     title: 'Фо-Бо',
     descr:
       'Мясной бульон на говядине, рисовая лапша, мраморная говядина, базилик, мята, кинза.',
@@ -27,6 +29,7 @@ const dishes: CardType[] = [
     mass: 420,
   },
   {
+    id: '2',
     title: 'Том Ям',
     descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
     url: tomYam,
@@ -34,6 +37,7 @@ const dishes: CardType[] = [
     mass: 350,
   },
   {
+    id: '3',
     title: 'Том Ям',
     descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
     url: tomYam,
@@ -41,6 +45,7 @@ const dishes: CardType[] = [
     mass: 350,
   },
   {
+    id: '4',
     title: 'Том Ям',
     descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
     url: tomYam,
@@ -48,6 +53,7 @@ const dishes: CardType[] = [
     mass: 350,
   },
   {
+    id: '5',
     title: 'Том Ям',
     descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
     url: tomYam,
@@ -56,16 +62,18 @@ const dishes: CardType[] = [
   },
 ];
 function Menu() {
+  const history = useHistory();
+  const addCard = (id: String) => {};
   return (
     <div className='p-4 flex flex-col  min-h-screen align-center w-full'>
-      <div className=' flex flex-row whitespace-nowrap overflow-x-auto my-5 '>
+      <div className=' flex flex-row whitespace-nowrap overflow-x-auto my-4 '>
         {cat.map((value, index) => (
           <div className=' cursor-pointer text-xs bg-gray-100 text-black1 rounded-3xl py-2 px-4 mx-1 hover:bg-orange1 hover:text-white '>
             {value}
           </div>
         ))}
       </div>
-      <div className=' flex flex-row overflow-x-auto mt-5 mb-3'>
+      <div className=' flex flex-row overflow-x-auto mt-1 mb-5'>
         {cat_food.map(({title, url}, index) => (
           <div className=' cursor-pointer w-28  flex flex-col align-center mr-2'>
             <div
@@ -84,10 +92,16 @@ function Menu() {
       <div className='overflow-y-auto'>
         {dishes.map((value, index) => (
           <div className='mb-6'>
-            <Card {...value}></Card>
+            <Card {...value} addCard={addCard}></Card>
           </div>
         ))}
       </div>
+      <button
+        className='btn-orange sticky  bottom-7 py-3 text-sm box-border'
+        onClick={() => history.push('/basket')}
+      >
+        Оформить заказ
+      </button>
     </div>
   );
 }
