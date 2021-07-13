@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CardType} from '../interfaces';
 interface BasketCard extends CardType {
   addCard: (x: String) => void;
 }
 function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
+  const [checked, setChecked] = useState(false);
+  const handleClick = (id: String) => {
+    setChecked(!checked);
+  };
   return (
     <div className='flex flex-row rounded-xl shadow-lg'>
       <div className='flex flex-col  align-center '>
@@ -27,12 +31,21 @@ function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
             {price} руб.
           </div>
           <div className=''>
-            <button
-              onClick={() => addCard(id)}
-              className='text-xs text-orange1 bg-white py-2 px-5 border-2 border-orange1 rounded-md whitespace-nowrap'
-            >
-              В корзину
-            </button>
+            {checked ? (
+              <button
+                onClick={() => handleClick(id)}
+                className='text-xs  bg-orange1 text-white py-2 px-7 border-2 border-orange1 rounded-md whitespace-nowrap'
+              >
+                Убрать
+              </button>
+            ) : (
+              <button
+                onClick={() => handleClick(id)}
+                className='text-xs text-orange1 bg-white py-2 px-5 border-2 border-orange1 rounded-md whitespace-nowrap'
+              >
+                В корзину
+              </button>
+            )}
           </div>
         </div>
       </div>
