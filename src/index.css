@@ -7,7 +7,7 @@
 @tailwind components;
 @layer components {
   .btn-orange {
-    @apply py-2 w-full px-4 bg-orange1 text-white font-semibold rounded-md shadow-md  focus:outline-none;
+    @apply py-3 w-full px-4  text-sm bg-orange1 text-white font-semibold rounded-md shadow-md  focus:outline-none;
   }
 }
 @tailwind utilities;
