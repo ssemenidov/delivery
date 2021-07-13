@@ -3,7 +3,10 @@ import React from 'react';
 function SearchBar() {
   return (
     <div className='py-2'>
-      <div className='bg-white flex items-center rounded-md shadow-lg'>
+      <div
+        className='bg-white flex items-center rounded-md '
+        style={{boxShadow: '0px 6px 15px rgba(84, 84, 84, 0.1)'}}
+      >
         <input
           className='rounded w-full py-3 px-6 text-gray1  focus:outline-none'
           id='search'
