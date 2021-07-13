@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/delivery/static/css/main.bd2fcc6c.chunk.css",
-    "main.js": "/delivery/static/js/main.bf581921.chunk.js",
-    "main.js.map": "/delivery/static/js/main.bf581921.chunk.js.map",
-    "runtime-main.js": "/delivery/static/js/runtime-main.2336e362.js",
-    "runtime-main.js.map": "/delivery/static/js/runtime-main.2336e362.js.map",
-    "static/js/2.f73f4c9c.chunk.js": "/delivery/static/js/2.f73f4c9c.chunk.js",
-    "static/js/2.f73f4c9c.chunk.js.map": "/delivery/static/js/2.f73f4c9c.chunk.js.map",
-    "static/js/3.fb8374f8.chunk.js": "/delivery/static/js/3.fb8374f8.chunk.js",
-    "static/js/3.fb8374f8.chunk.js.map": "/delivery/static/js/3.fb8374f8.chunk.js.map",
+    "main.css": "/delivery/static/css/main.ce49c002.chunk.css",
+    "main.js": "/delivery/static/js/main.01f6f9fd.chunk.js",
+    "main.js.map": "/delivery/static/js/main.01f6f9fd.chunk.js.map",
+    "runtime-main.js": "/delivery/static/js/runtime-main.c3a46948.js",
+    "runtime-main.js.map": "/delivery/static/js/runtime-main.c3a46948.js.map",
+    "static/js/2.7eed2f87.chunk.js": "/delivery/static/js/2.7eed2f87.chunk.js",
+    "static/js/2.7eed2f87.chunk.js.map": "/delivery/static/js/2.7eed2f87.chunk.js.map",
+    "static/js/3.9406654c.chunk.js": "/delivery/static/js/3.9406654c.chunk.js",
+    "static/js/3.9406654c.chunk.js.map": "/delivery/static/js/3.9406654c.chunk.js.map",
     "index.html": "/delivery/index.html",
-    "static/css/main.bd2fcc6c.chunk.css.map": "/delivery/static/css/main.bd2fcc6c.chunk.css.map",
-    "static/js/2.f73f4c9c.chunk.js.LICENSE.txt": "/delivery/static/js/2.f73f4c9c.chunk.js.LICENSE.txt",
+    "static/css/main.ce49c002.chunk.css.map": "/delivery/static/css/main.ce49c002.chunk.css.map",
+    "static/js/2.7eed2f87.chunk.js.LICENSE.txt": "/delivery/static/js/2.7eed2f87.chunk.js.LICENSE.txt",
     "static/media/index.css": "/delivery/static/media/Ubuntu-Regular.fbdecfce.ttf",
     "static/media/burger.eed777f6.png": "/delivery/static/media/burger.eed777f6.png",
     "static/media/pizza.47a8bc88.png": "/delivery/static/media/pizza.47a8bc88.png",
@@ -19,9 +19,9 @@
     "static/media/tom-yam.f63f0e16.png": "/delivery/static/media/tom-yam.f63f0e16.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2336e362.js",
-    "static/js/2.f73f4c9c.chunk.js",
-    "static/css/main.bd2fcc6c.chunk.css",
-    "static/js/main.bf581921.chunk.js"
+    "static/js/runtime-main.c3a46948.js",
+    "static/js/2.7eed2f87.chunk.js",
+    "static/css/main.ce49c002.chunk.css",
+    "static/js/main.01f6f9fd.chunk.js"
   ]
 }
