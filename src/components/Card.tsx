@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {CardType} from '../interfaces';
-interface BasketCard extends CardType {
-  addCard: (x: String) => void;
-}
-function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
+import {AddCard, DeleteCard} from '../redux/actions';
+
+function Card({id, title, descr, url, price, mass}: CardType) {
+  const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
-  const handleClick = (id: String) => {
-    setChecked(!checked);
+  const handleClick = () => {
+    if (!checked) {
+      dispatch(AddCard({id, title, descr, url, price, mass}));
+      setChecked(!checked);
+    } else {
+      dispatch(DeleteCard(id));
+      setChecked(!checked);
+    }
   };
   return (
     <div
@@ -35,7 +42,7 @@ function Card({id, title, descr, url, price, mass, addCard}: BasketCard) {
           </div>
           <div className=''>
             <button
-              onClick={() => handleClick(id)}
+              onClick={() => handleClick()}
               className={`${
                 checked ? 'bg-orange1 text-white ' : 'text-orange1 bg-white  '
               } text-sm  transition duration-500 py-2 border-2 border-orange1 text-center w-32 rounded-lg whitespace-nowrap`}

@@ -1,17 +1,7 @@
 import React from 'react';
 import {CardType} from '../interfaces';
-interface BasketCard extends CardType {
-  deleteCard: (x: String) => void;
-}
-function BasketCard({
-  id,
-  title,
-  descr,
-  url,
-  price,
-  mass,
-  deleteCard,
-}: BasketCard) {
+
+function BasketCard({id, title, descr, url, price, mass}: CardType) {
   return (
     <div className='flex flex-row rounded-xl relative w-full'>
       <div className=' '>

@@ -1,8 +1,10 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import tomYam from '../assets/img/tom-yam.png';
 import BasketCard from '../components/BasketCard';
-import {CardType} from '../interfaces';
+import {CardType, StateType} from '../interfaces';
+import {ClearBasket} from '../redux/actions';
 const dishes: CardType[] = [
   {
     id: '1',
@@ -64,14 +66,19 @@ const dishes: CardType[] = [
 ];
 function Basket() {
   const history = useHistory();
-  const deleteCard = (id: String) => {};
+  const basket = useSelector((state: StateType) => state.basket.basket);
+  const dispatch = useDispatch();
+  const handleArrow = () => {
+    dispatch(ClearBasket());
+    history.goBack();
+  };
   return (
-    <div className=' flex flex-col  min-h-screen align-center w-full '>
+    <div className=' flex flex-col  justify-between align-center w-full  h-screen'>
       <div className='p-4 md:p-11 xl:px-40 '>
         <div className='py-2 flex items-center '>
           <div className='mr-4 h-full '>
             <button
-              onClick={() => history.goBack()}
+              onClick={handleArrow}
               className='    focus:outline-none  flex items-center h-4 w-4  md:w-5 md:h-5 xl:w-6 xl:h-6'
             >
               <svg
@@ -104,9 +111,9 @@ function Basket() {
           </div>
         </div>
         <div className='overflow-y-auto'>
-          {dishes.map((value, index) => (
+          {basket.map((value, index) => (
             <div className='mb-6 w-full'>
-              <BasketCard {...value} deleteCard={deleteCard}></BasketCard>
+              <BasketCard {...value}></BasketCard>
             </div>
           ))}
         </div>
