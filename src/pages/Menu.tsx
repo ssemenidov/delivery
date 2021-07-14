@@ -8,7 +8,17 @@ import {CardType} from '../interfaces';
 import Card from '../components/Card';
 import {useHistory} from 'react-router-dom';
 
-const cat = ['самое быстрое', 'самое доступное', 'высший рейтинг'];
+const cat = [
+  'самое быстрое',
+  'самое доступное',
+  'высший рейтинг',
+  'самое быстрое',
+  'самое доступное',
+  'высший рейтинг',
+  'самое быстрое',
+  'самое доступное',
+  'высший рейтинг',
+];
 const cat_food = [
   {title: 'Суши и роллы	', url: sushi},
   {title: 'Бургеры, картошка ', url: burger},
@@ -106,16 +116,17 @@ function Menu() {
   const history = useHistory();
   const addCard = (id: String) => {};
   return (
-    <div className='pt-4  flex flex-col  min-h-screen  w-full relative'>
-      <div className='px-4  md:pl-11 xl:pl-40 pr-0'>
-        <div className=' flex flex-row whitespace-nowrap overflow-x-auto my-4 '>
+    <div className='pt-4  flex flex-col  min-h-screen  w-full '>
+      <div className='px-4  md:pl-11 xl:pl-40 pr-0 relative'>
+        <div className=' flex flex-row whitespace-nowrap overflow-x-scroll scrollbar-hide my-4 '>
           {cat.map((value, index) => (
-            <div className=' cursor-pointer text-sm bg-gray-100 text-black1 rounded-3xl py-3 px-4 mr-3 hover:bg-orange1 hover:text-white '>
+            <div className=' cursor-pointer  text-sm bg-gray-100 text-black1 rounded-3xl py-3 px-4 mr-3 active:bg-orange1 active:text-white '>
               {value}
             </div>
           ))}
         </div>
-        <div className=' flex flex-row overflow-x-auto  pb-2 mb-3'>
+        <div className=' flex flex-row overflow-x-scroll scrollbar-hide  pb-2 mb-3 relative'>
+          <div className='fixed top-0 right-0 h-60 w-12 bg-gradient-to-l from-white '></div>
           {cat_food.map(({title, url}, index) => (
             <div className=' cursor-pointer w-36 xl:w-40  flex flex-col align-center mr-3 xl:mr-5'>
               <div

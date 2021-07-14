@@ -68,11 +68,11 @@ function Basket() {
   return (
     <div className=' flex flex-col  min-h-screen align-center w-full '>
       <div className='p-4 md:p-11 xl:px-40 '>
-        <div className='py-2 flex items-center'>
-          <div className='mr-4 '>
+        <div className='py-2 flex items-center '>
+          <div className='mr-4 h-full '>
             <button
               onClick={() => history.goBack()}
-              className='    focus:outline-none h-4 w-4 lg:w-6 lg:h-6'
+              className='    focus:outline-none  flex items-center h-4 w-4  md:w-5 md:h-5 xl:w-6 xl:h-6'
             >
               <svg
                 width='100%'
