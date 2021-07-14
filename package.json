@@ -30,6 +30,7 @@
     "build": "craco build",
     "test": "craco test",
     "gh-pages": "gh-pages -d build",
+    "firebase":"firebase deploy",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
