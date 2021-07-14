@@ -1,69 +1,10 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import tomYam from '../assets/img/tom-yam.png';
 import BasketCard from '../components/BasketCard';
 import {CardType, StateType} from '../interfaces';
 import {ClearBasket} from '../redux/actions';
-const dishes: CardType[] = [
-  {
-    id: '1',
-    title: 'Фо-Бо',
-    descr:
-      'Мясной бульон на говядине, рисовая лапша, мраморная говядина, базилик, мята, кинза.',
-    url: tomYam,
-    price: 320,
-    mass: 420,
-  },
-  {
-    id: '2',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-  {
-    id: '3',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-  {
-    id: '4',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-  {
-    id: '4',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-  {
-    id: '4',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-  {
-    id: '4',
-    title: 'Том Ям',
-    descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
-    url: tomYam,
-    price: 290,
-    mass: 350,
-  },
-];
+
 function Basket() {
   const history = useHistory();
   const basket = useSelector((state: StateType) => state.basket.basket);

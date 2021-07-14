@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {CardType} from '../interfaces';
+import {DeleteCard} from '../redux/actions';
 
 function BasketCard({id, title, descr, url, price, mass}: CardType) {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(DeleteCard(id));
+  };
+
   return (
     <div className='flex flex-row rounded-xl relative w-full'>
       <div className=' '>
@@ -30,7 +37,7 @@ function BasketCard({id, title, descr, url, price, mass}: CardType) {
       </div>
       <div className='absolute top-0 right-0'>
         <button
-          onClick={() => {}}
+          onClick={() => handleClick()}
           className='p-2 focus:outline-none  w-6 h-6 md:w-8 md:h-8  '
         >
           <svg

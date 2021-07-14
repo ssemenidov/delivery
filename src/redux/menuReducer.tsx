@@ -13,7 +13,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '2',
-      title: 'Том Ям',
+      title: 'Том Ям2',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -21,7 +21,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '3',
-      title: 'Том Ям',
+      title: 'Том Ям3',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -29,7 +29,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '4',
-      title: 'Том Ям',
+      title: 'Том Ям4',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -37,7 +37,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '5',
-      title: 'Том Ям',
+      title: 'Том Ям5',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -45,7 +45,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '6',
-      title: 'Том Ям',
+      title: 'Том Ям6',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -53,7 +53,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '7',
-      title: 'Том Ям',
+      title: 'Том Ям7',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -61,7 +61,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '8',
-      title: 'Том Ям',
+      title: 'Том Ям8',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
@@ -69,7 +69,7 @@ const initialState: {menu: CardType[]} = {
     },
     {
       id: '9',
-      title: 'Том Ям',
+      title: 'Том Ям9',
       descr: 'Куриный бульон, грибы, креветки, острая паста Том Ям',
       url: tomYam,
       price: 290,
