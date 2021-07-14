@@ -7,7 +7,7 @@ export function AddCard(item: CardType) {
     payload: item,
   };
 }
-export function DeleteCard(id: String) {
+export function DeleteCard(id: string) {
   return {
     type: DELETE_CARD,
     payload: id,

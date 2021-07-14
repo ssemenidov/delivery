@@ -1,23 +1,23 @@
 export interface CardType {
-  id: String;
-  title: String;
-  descr: String;
-  url: String;
+  id: string;
+  title: string;
+  descr: string;
+  url: string;
   price: number;
   mass: number;
 }
 
 export type Action = {
-  type: String;
+  type: string;
   payload: any;
 };
 export type ActionCard = {
-  type: String;
+  type: string;
   payload: CardType;
 };
 export type ActionId = {
-  type: String;
-  payload: String;
+  type: string;
+  payload: string;
 };
 
 export interface StateType {
