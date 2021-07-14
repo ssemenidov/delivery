@@ -1,9 +1,15 @@
 @tailwind base;
-@font-face {
-  font-family: 'Ubuntu';
-  src: url(./assets/fonts/Ubuntu-Regular.ttf) format('ttf');
+@layer base {
+  html {
+    font-size: 14px;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: 'Ubuntu', sans-serif;
+  }
 }
-
 @tailwind components;
 @layer components {
   .btn-orange {
@@ -11,13 +17,6 @@
   }
 }
 @tailwind utilities;
-
-html {
-  font-size: 14px;
-}
-* {
-  -webkit-tap-highlight-color: transparent;
-}
 
 @media (min-width: 1024px) {
   html {

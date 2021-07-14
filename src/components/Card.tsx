@@ -34,7 +34,7 @@ function Card({id, title, descr, url, price, mass}: CardType) {
       <div className='flex justify-around  flex-col p-3 xl:h-40 w-full'>
         <div className='h-24 md:h-28'>
           <div className='text-black1 text-base font-medium'>{title}</div>
-          <div className='text-gray1 text-sm '>{descr}</div>
+          <div className='text-gray1 text-sm leading-4 '>{descr}</div>
         </div>
         <div className='flex flex-row w-full justify-between'>
           <div className='whitespace-nowrap text-black1 text-base md:text-lg font-medium'>
