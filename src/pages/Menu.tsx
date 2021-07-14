@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import burger from '../assets/img/burger.png';
 import sushi from '../assets/img/sushi.png';
 import pizza from '../assets/img/pizza.png';
@@ -42,27 +42,46 @@ const cat_food = [
 function Menu() {
   const history = useHistory();
   const menu = useSelector((state: StateType) => state.menu.menu);
+  const [currentCat, setCurrentCat] = useState(0);
+  const [currentFood, setCurrentFood] = useState(0);
+  const CatClick = (index: number) => {
+    setCurrentCat(index);
+  };
+  const FoodClick = (index: number) => {
+    setCurrentFood(index);
+  };
   return (
     <div className='pt-4  flex flex-col  min-h-screen  w-full '>
       <div className='px-4  md:pl-11 xl:pl-40 pr-0 relative'>
         <div className=' flex flex-row whitespace-nowrap overflow-x-scroll scrollbar-hide my-4 '>
           {cat.map((value, index) => (
-            <div className=' cursor-pointer  text-sm bg-gray-100 text-black1 rounded-3xl py-3 px-4 mr-3 active:bg-orange1 active:text-white '>
+            <div
+              onClick={() => CatClick(index)}
+              className={`${
+                index == currentCat
+                  ? 'bg-orange1 text-white '
+                  : 'bg-gray-100 text-black1'
+              } transition duration-300 cursor-pointer  text-sm  rounded-3xl py-3 px-4 mr-3   `}
+            >
               {value}
             </div>
           ))}
         </div>
-        <div className=' flex flex-row overflow-x-scroll scrollbar-hide  pb-2 mb-3 relative'>
-          <div className='fixed top-0 right-0 h-60 w-12 bg-gradient-to-l from-white '></div>
+        <div className=' flex flex-row overflow-x-scroll scrollbar-hide pl-1 pt-1 pb-2 mb-3 relative'>
+          <div className=' fixed top-0 right-0 h-60 w-12 bg-gradient-to-l from-white '></div>
           {cat_food.map(({title, url}, index) => (
-            <div className=' cursor-pointer w-36 xl:w-40  flex flex-col align-center mr-3 xl:mr-5'>
+            <div
+              onClick={() => FoodClick(index)}
+              className={`${
+                index == currentFood ? 'transform scale-105' : ''
+              } cursor-pointer w-36 xl:w-40  flex flex-col align-center mr-3 xl:mr-5`}
+            >
               <div
-                className='rounded-xl w-36 h-24 xl:w-40 xl:h-28  bg-center bg-no-repeat bg-cover '
+                className={`  rounded-xl w-36 h-24 xl:w-40 xl:h-28  bg-center bg-no-repeat bg-cover `}
                 style={{
                   backgroundImage: `url(${url})`,
                 }}
               ></div>
-
               <div className='whitespace-normal text-sm text-center '>
                 <span>{title}</span>
               </div>
