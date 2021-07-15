@@ -10,8 +10,14 @@ interface SearchBarProps {
 const options = [
   {value: 'Марьиной рощи', label: 'Марьиной рощи'},
   {value: 'Маркса', label: 'Маркса'},
+  {value: 'Маркса 5', label: 'Маркса 5 '},
   {value: 'Марьиной рощи  6', label: 'Марьиной рощи 6'},
-  {value: 'Маршала Жукова', label: 'Маршала Жукова'},
+  {value: 'Маршала Жукова', label: 'Маршала Жукова '},
+  {value: 'Маршала Жукова 5', label: 'Маршала Жукова 5'},
+  {value: 'Гагарина 18', label: 'Гагарина 18'},
+  {value: 'Жукова 28', label: 'Жукова 28'},
+  {value: 'Депутатская 38', label: 'Депутатская 38'},
+  {value: 'Пискунова 62', label: 'Пискунова 62'},
 ];
 const customStyles = {
   option: (provided: any, state: any) => ({
@@ -26,6 +32,7 @@ const customStyles = {
     color: state.isSelected ? 'black' : 'gray',
     padding: '7px 20px',
   }),
+
   dropdownIndicator: () => ({
     backroundImage: {geo},
   }),
@@ -67,6 +74,7 @@ function SearchBar({address, setAddress}: SearchBarProps) {
         styles={customStyles}
         components={{DropdownIndicator}}
         placeholder='Укажите адрес доставки'
+        // maxMenuHeight={300}
         onChange={handleChange}
       />
       {/* <div
