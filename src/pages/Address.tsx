@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar';
 import {useHistory} from 'react-router';
 import {useDispatch} from 'react-redux';
 import {AddressUpdate} from '../redux/actions';
+import DevSearchBar from '../components/DevSearchBar';
 function Address() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function Address() {
   return (
     <div className='p-4 flex flex-col items-center  justify-center h-screen'>
       <div className='w-full flex flex-col h-full md:h-auto justify-center  text-base md:max-w-3xl lg:max-w-6xl md:mb-40'>
-        <SearchBar address={address} setAddress={setAddress} />
+        <DevSearchBar address={address} setAddress={setAddress} />
       </div>
       <div className='py-4 md:max-w-md lg:max-w-lg  '>
         <button className='btn-orange ' onClick={() => handleClick()}>
