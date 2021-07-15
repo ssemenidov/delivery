@@ -27,4 +27,7 @@ export interface StateType {
   menu: {
     menu: CardType[];
   };
+  address: {
+    address: string;
+  };
 }

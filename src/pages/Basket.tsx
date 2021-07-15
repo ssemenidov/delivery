@@ -7,7 +7,10 @@ import {ClearBasket} from '../redux/actions';
 
 function Basket() {
   const history = useHistory();
+  const address = useSelector((state: StateType) => state.address.address);
   const basket = useSelector((state: StateType) => state.basket.basket);
+  console.log(address);
+
   const dispatch = useDispatch();
   const handleArrow = () => {
     dispatch(ClearBasket());
@@ -46,7 +49,7 @@ function Basket() {
               className='rounded w-full py-3 px-6 text-gray1  focus:outline-none'
               id='search'
               type='text'
-              placeholder='Марьиной Рощи, 2'
+              value={address}
               readOnly
             />
           </div>

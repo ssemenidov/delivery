@@ -1,5 +1,5 @@
 import {CardType} from '../interfaces';
-import {ADD_CARD, DELETE_CARD, DELETE_CARD_MANY} from './types';
+import {ADDRESS_UPDATE, ADD_CARD, DELETE_CARD, DELETE_CARD_MANY} from './types';
 
 export function AddCard(item: CardType) {
   return {
@@ -16,5 +16,11 @@ export function DeleteCard(id: string) {
 export function ClearBasket() {
   return {
     type: DELETE_CARD_MANY,
+  };
+}
+export function AddressUpdate(address: string) {
+  return {
+    type: ADDRESS_UPDATE,
+    payload: address,
   };
 }

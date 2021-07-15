@@ -1,6 +1,9 @@
 import React from 'react';
-
-function SearchBar() {
+interface SearchBarProps {
+  address: string;
+  setAddress: (x: string) => void;
+}
+function SearchBar({address, setAddress}: SearchBarProps) {
   return (
     <div className='py-2'>
       <div
@@ -12,6 +15,10 @@ function SearchBar() {
           id='search'
           type='text'
           placeholder='Укажите адрес доставки'
+          value={address}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setAddress(e.target.value)
+          }
         />
         <div className=''>
           <button className=' text-white rounded-full p-2  focus:outline-none w-12 h-12 flex items-center justify-center'>
