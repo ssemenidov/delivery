@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar';
 import {useHistory} from 'react-router';
 import {useDispatch} from 'react-redux';
 import {AddressUpdate} from '../redux/actions';
+import AsyncSearchBar from '../components/AsyncSearchBar';
 function Address() {
   const history = useHistory();
   const dispatch = useDispatch();

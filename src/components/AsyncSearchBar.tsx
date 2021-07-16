@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import Select, {components} from 'react-select';
-
+import AsyncSelect from 'react-select/async';
 import geo from '../assets/img/Vector.svg';
 
 interface SearchBarProps {
@@ -8,7 +9,11 @@ interface SearchBarProps {
   setAddress: (x: string) => void;
 }
 //react-select styles
-const options = [
+type OptionType = {
+  label: string;
+  value: string;
+};
+const options: OptionType[] = [
   {value: 'Марьиной рощи', label: 'Марьиной рощи'},
   {value: 'Маркса', label: 'Маркса'},
   {value: 'Маркса 5', label: 'Маркса 5 '},
@@ -40,6 +45,9 @@ const customStyles = {
   indicatorSeparator: () => ({
     display: 'none',
   }),
+  input: () => ({
+    opacity: 1,
+  }),
   control: () => ({
     display: 'flex',
     backgroundColor: 'white',
@@ -48,7 +56,7 @@ const customStyles = {
     padding: '0.5rem 1rem',
   }),
   singleValue: (provided: any, state: any) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
+    const opacity = 1;
     const transition = 'opacity 300ms';
 
     return {...provided, opacity, transition};
@@ -61,23 +69,52 @@ const DropdownIndicator = (props: any) => {
     </components.DropdownIndicator>
   );
 };
-function SearchBar({address, setAddress}: SearchBarProps) {
+
+function AsyncSearchBar({address, setAddress}: SearchBarProps) {
   const handleChange = (value: {value: string; label: string} | null) => {
-    if (value?.value) {
-      setAddress(value?.value);
-    }
+    console.log(value?.value);
+    setAddress(value?.value ? value?.value : '404');
+  };
+
+  const loadOptions = async (inputValue: string): Promise<OptionType[]> => {
+    console.log(inputValue);
+
+    // const res = await axios({
+    //   method: 'get',
+    //   url: 'https://search-maps.yandex.ru/v1/',
+    //   params: {
+    //     text: inputValue,
+    //     type: 'geo',
+    //     lang: 'ru_RU',
+    //     apikey: process.env.REACT_APP_API_KEY,
+    //     results: 5,
+    //   },
+    // });
+    // const data = await res.data.features.map((item: any) => ({
+    //   label: item.properties.GeocoderMetaData.text,
+    //   value: item.properties.GeocoderMetaData.text,
+    // }));
+    // await console.log(data);
+    return options;
+  };
+
+  const handleInputChange = (newValue: string) => {
+    setAddress(newValue);
+    console.log(newValue);
   };
   return (
     <div className='py-2'>
-      <Select
-        options={options}
+      <AsyncSelect
+        cacheOptions
         styles={customStyles}
         components={{DropdownIndicator}}
+        loadOptions={loadOptions}
         onChange={handleChange}
-        placeholder='Укажите адрес доставки'
+        inputValue={address}
+        onInputChange={handleInputChange}
       />
     </div>
   );
 }
 
-export default SearchBar;
+export default AsyncSearchBar;
