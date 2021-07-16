@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axios';
 import React from 'react';
 import Select, {components} from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -79,22 +79,22 @@ function AsyncSearchBar({address, setAddress}: SearchBarProps) {
   const loadOptions = async (inputValue: string): Promise<OptionType[]> => {
     console.log(inputValue);
 
-    // const res = await axios({
-    //   method: 'get',
-    //   url: 'https://search-maps.yandex.ru/v1/',
-    //   params: {
-    //     text: inputValue,
-    //     type: 'geo',
-    //     lang: 'ru_RU',
-    //     apikey: process.env.REACT_APP_API_KEY,
-    //     results: 5,
-    //   },
-    // });
-    // const data = await res.data.features.map((item: any) => ({
-    //   label: item.properties.GeocoderMetaData.text,
-    //   value: item.properties.GeocoderMetaData.text,
-    // }));
-    // await console.log(data);
+    const res = await axios({
+      method: 'get',
+      url: 'https://search-maps.yandex.ru/v1/',
+      params: {
+        text: inputValue,
+        type: 'geo',
+        lang: 'ru_RU',
+        apikey: process.env.REACT_APP_API_KEY,
+        results: 5,
+      },
+    });
+    const data = await res.data.features.map((item: any) => ({
+      label: item.properties.GeocoderMetaData.text,
+      value: item.properties.GeocoderMetaData.text,
+    }));
+    await console.log(data);
     return options;
   };
 
