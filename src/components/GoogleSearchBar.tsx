@@ -8,19 +8,24 @@ import geo from '../assets/img/Vector.svg';
 interface SearchBarProps {
   address: string;
   setAddress: (x: string) => void;
+  setlatLang: (x: {lat: string; lang: string}) => void;
 }
 //react-select styles
-function GoogleSearchBar({address, setAddress}: SearchBarProps) {
+function GoogleSearchBar({address, setAddress, setlatLang}: SearchBarProps) {
   const handleChange = (value: string) => {
     setAddress(value);
   };
 
-  const handleSelect = (value: string) => {
+  const handleSelect = async (value: string) => {
     setAddress(value);
-    geocodeByAddress(value)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log('Success', latLng))
-      .catch((error) => console.error('Error', error));
+    try {
+      const results = await geocodeByAddress(value);
+      const latLng = await getLatLng(results[0]);
+      setlatLang({lat: latLng.lat.toString(), lang: latLng.lng.toString()});
+      console.log(results, latLng);
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div className='py-2 relative'>

@@ -6,10 +6,19 @@ export interface CardType {
   price: number;
   mass: number;
 }
+export interface AddressType {
+  address: string;
+  lat: string;
+  lang: string;
+}
 
-export type Action = {
+export type ActionType = {
   type: string;
   payload: any;
+};
+export type ActionAddress = {
+  type: string;
+  payload: AddressType;
 };
 export type ActionCard = {
   type: string;
@@ -29,5 +38,7 @@ export interface StateType {
   };
   address: {
     address: string;
+    lat: string;
+    lang: string;
   };
 }
