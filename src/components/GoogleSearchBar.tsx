@@ -101,6 +101,7 @@ function GoogleSearchBar({address, setAddress, setlatLang}: SearchBarProps) {
                           className,
                           style,
                         })}
+                        key={suggestion.id}
                       >
                         <span>{suggestion.description}</span>
                       </div>

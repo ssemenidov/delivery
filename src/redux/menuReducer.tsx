@@ -1,6 +1,6 @@
-import {ActionId, CardType} from '../interfaces';
+import {ActionType, MenuType} from '../interfaces';
 import tomYam from '../assets/img/tom-yam.png';
-const initialState: {menu: CardType[]} = {
+const initialState: MenuType = {
   menu: [
     {
       id: '1',
@@ -77,7 +77,7 @@ const initialState: {menu: CardType[]} = {
     },
   ],
 };
-export const menuReducer = (state = initialState, action: ActionId) => {
+export const menuReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     default:
       return state;

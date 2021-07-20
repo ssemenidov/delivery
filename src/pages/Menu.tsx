@@ -57,6 +57,7 @@ function Menu() {
           {cat.map((value, index) => (
             <div
               onClick={() => CatClick(index)}
+              key={index}
               className={`${
                 index == currentCat
                   ? 'bg-orange1 text-white '
@@ -71,6 +72,7 @@ function Menu() {
           <div className=' fixed top-0 right-0 h-60 w-12 bg-gradient-to-l from-white '></div>
           {cat_food.map(({title, url}, index) => (
             <div
+              key={index}
               onClick={() => FoodClick(index)}
               className={`${
                 index == currentFood ? 'transform scale-105' : ''
@@ -91,8 +93,8 @@ function Menu() {
       </div>
       <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
         {menu.map((value, index) => (
-          <div className=''>
-            <Card key={index} {...value}></Card>
+          <div className='' key={index}>
+            <Card {...value}></Card>
           </div>
         ))}
       </div>

@@ -11,6 +11,13 @@ export interface AddressType {
   lat: string;
   lang: string;
 }
+export interface BasketType {
+  basket: CardType[];
+}
+
+export interface MenuType {
+  menu: CardType[];
+}
 
 export type ActionType = {
   type: string;
@@ -30,15 +37,7 @@ export type ActionId = {
 };
 
 export interface StateType {
-  basket: {
-    basket: CardType[];
-  };
-  menu: {
-    menu: CardType[];
-  };
-  address: {
-    address: string;
-    lat: string;
-    lang: string;
-  };
+  basket: BasketType;
+  menu: MenuType;
+  address: AddressType;
 }
