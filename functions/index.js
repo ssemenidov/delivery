@@ -26,7 +26,9 @@ app.get('/food', (req, res) => {
       {timeout: 1}
     )
     .then((response) => {
-      console.log(response.data.payload.foundPlaces.slice(0, 10));
+      console.log(
+        JSON.stringify(response.data.payload.foundPlaces.slice(0, 10))
+      );
       res
         .status(200)
         .send(JSON.stringify(response.data.payload.foundPlaces.slice(0, 10)));
