@@ -6,10 +6,26 @@ export interface CardType {
   price: number;
   mass: number;
 }
+export interface AddressType {
+  address: string;
+  lat: string;
+  lang: string;
+}
+export interface BasketType {
+  basket: CardType[];
+}
 
-export type Action = {
+export interface MenuType {
+  menu: CardType[];
+}
+
+export type ActionType = {
   type: string;
   payload: any;
+};
+export type ActionAddress = {
+  type: string;
+  payload: AddressType;
 };
 export type ActionCard = {
   type: string;
@@ -21,13 +37,7 @@ export type ActionId = {
 };
 
 export interface StateType {
-  basket: {
-    basket: CardType[];
-  };
-  menu: {
-    menu: CardType[];
-  };
-  address: {
-    address: string;
-  };
+  basket: BasketType;
+  menu: MenuType;
+  address: AddressType;
 }

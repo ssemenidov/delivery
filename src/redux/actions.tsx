@@ -1,5 +1,11 @@
 import {CardType} from '../interfaces';
-import {ADDRESS_UPDATE, ADD_CARD, DELETE_CARD, DELETE_CARD_MANY} from './types';
+import {
+  ADDRESS_UPDATE,
+  ADD_CARD,
+  DELETE_CARD,
+  DELETE_CARD_MANY,
+  LATLANG_UPDATE,
+} from './types';
 
 export function AddCard(item: CardType) {
   return {
@@ -22,5 +28,11 @@ export function AddressUpdate(address: string) {
   return {
     type: ADDRESS_UPDATE,
     payload: address,
+  };
+}
+export function LatLangUpdate(LatLang: {lat: string; lang: string}) {
+  return {
+    type: LATLANG_UPDATE,
+    payload: LatLang,
   };
 }

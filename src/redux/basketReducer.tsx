@@ -1,6 +1,6 @@
-import {ActionCard, ActionId, CardType} from '../interfaces';
+import {ActionCard, ActionId, BasketType, CardType} from '../interfaces';
 import {ADD_CARD, DELETE_CARD, DELETE_CARD_MANY} from './types';
-const initialState: {basket: CardType[]} = {
+const initialState: BasketType = {
   basket: [],
 };
 export const basketReducer = (
@@ -21,4 +21,12 @@ export const basketReducer = (
     default:
       return state;
   }
+};
+
+export const GetTotal = (basket: CardType[]) => {
+  const total = basket.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.price,
+    0
+  );
+  return total;
 };

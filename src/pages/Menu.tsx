@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import burger from '../assets/img/burger.png';
 import sushi from '../assets/img/sushi.png';
 import pizza from '../assets/img/pizza.png';
-import tomYam from '../assets/img/tom-yam.png';
 
 import {CardType, StateType} from '../interfaces';
 import Card from '../components/Card';
 import {useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-
+import axios from '../axios';
 const cat = [
   'самое быстрое',
   'самое доступное',
@@ -42,8 +41,23 @@ const cat_food = [
 function Menu() {
   const history = useHistory();
   const menu = useSelector((state: StateType) => state.menu.menu);
+  const address = useSelector((state: StateType) => state.address);
   const [currentCat, setCurrentCat] = useState(0);
   const [currentFood, setCurrentFood] = useState(0);
+  useEffect(() => {
+    const getCatalog = async () => {
+      const res = await axios({
+        method: 'get',
+        url: '/food',
+        params: {
+          lat: address.lat,
+          lang: address.lang,
+        },
+      });
+      await console.log(res.data);
+    };
+    getCatalog();
+  }, []);
   const CatClick = (index: number) => {
     setCurrentCat(index);
   };
@@ -57,6 +71,7 @@ function Menu() {
           {cat.map((value, index) => (
             <div
               onClick={() => CatClick(index)}
+              key={index}
               className={`${
                 index == currentCat
                   ? 'bg-orange1 text-white '
@@ -71,6 +86,7 @@ function Menu() {
           <div className=' fixed top-0 right-0 h-60 w-12 bg-gradient-to-l from-white '></div>
           {cat_food.map(({title, url}, index) => (
             <div
+              key={index}
               onClick={() => FoodClick(index)}
               className={`${
                 index == currentFood ? 'transform scale-105' : ''
@@ -91,8 +107,8 @@ function Menu() {
       </div>
       <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
         {menu.map((value, index) => (
-          <div className=''>
-            <Card key={index} {...value}></Card>
+          <div className='' key={index}>
+            <Card {...value}></Card>
           </div>
         ))}
       </div>

@@ -2,20 +2,27 @@ import React, {useState} from 'react';
 import SearchBar from '../components/SearchBar';
 import {useHistory} from 'react-router';
 import {useDispatch} from 'react-redux';
-import {AddressUpdate} from '../redux/actions';
+import {AddressUpdate, LatLangUpdate} from '../redux/actions';
+import AsyncSearchBar from '../components/AsyncSearchBar';
 import GoogleSearchBar from '../components/GoogleSearchBar';
 function Address() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [address, setAddress] = useState('');
+  const [latLang, setlatLang] = useState({lat: '', lang: ''});
   const handleClick = () => {
     dispatch(AddressUpdate(address));
+    dispatch(LatLangUpdate(latLang));
     history.push('/menu');
   };
   return (
     <div className='p-4 flex flex-col items-center  justify-center h-screen'>
       <div className='w-full flex flex-col h-full md:h-auto justify-center  text-base md:max-w-3xl lg:max-w-6xl md:mb-40'>
-        <SearchBar address={address} setAddress={setAddress} />
+        <GoogleSearchBar
+          address={address}
+          setAddress={setAddress}
+          setlatLang={setlatLang}
+        />
       </div>
       <div className='py-4 md:max-w-md lg:max-w-lg  '>
         <button className='btn-orange ' onClick={() => handleClick()}>

@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 console.log(process.env.NODE_ENV);
 const instance = axios.create({
-  baseURL: 'https://search-maps.yandex.ru/v1/',
+  baseURL: process.env.REACT_APP_URL,
 });
 export default instance;

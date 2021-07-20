@@ -31,8 +31,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "gh-pages": "gh-pages -d build",
+    "emulate": "firebase emulators:start --only hosting",
     "firebase": "firebase deploy",
+    "channel": "firebase hosting:channel:deploy dev",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
