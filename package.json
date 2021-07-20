@@ -31,6 +31,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "emulate": "firebase emulators:start",
     "gh-pages": "gh-pages -d build",
     "firebase": "firebase deploy",
     "eject": "react-scripts eject"

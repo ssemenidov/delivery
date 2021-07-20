@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "google"],
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "indent": [2, 2],
+    "semi": [2, "always"],
+    "max-len": ["error", {"code": 80}],
+    "comma-dangle": [
+      1,
+      {
+        "objects": "ignore",
+        "arrays": "ignore",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "ignore"
+      }
+    ]
+  }
+}

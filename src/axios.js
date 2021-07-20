@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 console.log(process.env.NODE_ENV);
 const instance = axios.create({
-  baseURL: 'https://search-maps.yandex.ru/v1/',
+  baseURL: 'http://localhost:5001/delivery-d1/us-central1/api/',
 });
 export default instance;
