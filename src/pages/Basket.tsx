@@ -4,14 +4,15 @@ import {useHistory} from 'react-router-dom';
 import BasketCard from '../components/BasketCard';
 import {CardType, StateType} from '../interfaces';
 import {ClearBasket} from '../redux/actions';
+import {GetTotal} from '../redux/basketReducer';
 
 function Basket() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const address = useSelector((state: StateType) => state.address.address);
   const basket = useSelector((state: StateType) => state.basket.basket);
-  console.log(address);
+  const total = GetTotal(basket);
 
-  const dispatch = useDispatch();
   const handleArrow = () => {
     dispatch(ClearBasket());
     history.goBack();
@@ -69,7 +70,7 @@ function Basket() {
         <div className='md:max-w-md w-full'>
           <div className='text-black1 flex justify-between '>
             <div className=''>Итого с доставкой:</div>
-            <div className=''>1168 руб.</div>
+            <div className=''>{total} руб.</div>
           </div>
           <div className='text-gray1 flex justify-between mb-5'>
             <div className=''>Время доставки:</div>
