@@ -11,31 +11,27 @@ app.use(express.json());
 // - API routes
 app.get('/', (req, res) => res.status(200).send('hello world'));
 
-app.get('/food', (req, res) => {
+app.get('/food', async (req, res) => {
   console.log(req.query);
-  axios
-    .get(
-      // eslint-disable-next-line max-len
-      'https://eda.yandex/api/v2/catalog',
-      {
-        params: {
-          latitude: req.query.lat,
-          longitude: req.query.lang,
-        },
+  const response = await axios.get(
+    // eslint-disable-next-line max-len
+    'https://eda.yandex/api/v2/catalog',
+    {
+      params: {
+        latitude: req.query.lat,
+        longitude: req.query.lang,
       },
-      {timeout: 1}
-    )
-    .then((response) => {
-      console.log(
-        JSON.stringify(response.data.payload.foundPlaces.slice(0, 10))
-      );
-      res
-        .status(200)
-        .send(JSON.stringify(response.data.payload.foundPlaces.slice(0, 10)));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    },
+    {timeout: 1}
+  );
+  const data = await response.data.payload.foundPlaces;
+  const slug = await data.map((value) => value.place.slug);
+  await console.log(slug);
+
+  const str = await JSON.stringify(data);
+
+  console.log(str.slice(0, 10));
+  await res.status(200).send(str.slice(0, 10));
 });
 // - Listen commands
 exports.api = functions.https.onRequest(app);
