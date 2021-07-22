@@ -6,8 +6,9 @@ import pizza from '../assets/img/pizza.png';
 import {CardType, StateType} from '../interfaces';
 import Card from '../components/Card';
 import {useHistory} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from '../axios';
+import {SetMenu} from '../redux/actions';
 const cat = [
   'самое быстрое',
   'самое доступное',
@@ -40,6 +41,7 @@ const cat_food = [
 
 function Menu() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const menu = useSelector((state: StateType) => state.menu.menu);
   const address = useSelector((state: StateType) => state.address);
   const [currentCat, setCurrentCat] = useState(0);
@@ -54,7 +56,8 @@ function Menu() {
           lang: address.lang,
         },
       });
-      await console.log(res.data);
+      console.log(res.data);
+      dispatch(SetMenu(res.data));
     };
     getCatalog();
   }, []);

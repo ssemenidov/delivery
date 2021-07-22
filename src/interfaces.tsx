@@ -35,6 +35,10 @@ export type ActionId = {
   type: string;
   payload: string;
 };
+export type ActionMenu = {
+  type: string;
+  payload: CardType[];
+};
 
 export interface StateType {
   basket: BasketType;

@@ -24,7 +24,7 @@ function Card({id, title, descr, url, price, mass}: CardType) {
         <div
           className='min-w-full w-24 h-24  md:w-28 md:h-28 xl:w-40 xl:h-40 bg-center bg-no-repeat bg-cover rounded-tl-lg'
           style={{
-            backgroundImage: `url(${url})`,
+            backgroundImage: `url(https://eda.yandex${url})`,
           }}
         ></div>
         <div className='xl:hidden py-3 text-gray1 whitespace-nowrap text-sm self-center'>
