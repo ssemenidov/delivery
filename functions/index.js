@@ -21,7 +21,7 @@ app.get('/food', async (req, res) => {
 
   // // console.log(str);
   const merged = ResItems.flat(1);
-  await console.log(merged);
+  await console.log(JSON.stringify(merged));
   res.status(200).send(merged);
 });
 
