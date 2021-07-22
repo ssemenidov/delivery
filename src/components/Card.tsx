@@ -28,13 +28,19 @@ function Card({id, title, descr, url, price, mass}: CardType) {
           }}
         ></div>
         <div className='xl:hidden py-3 text-gray1 whitespace-nowrap text-sm self-center'>
-          {mass} гр
+          {mass}
         </div>
       </div>
-      <div className='flex justify-around  flex-col p-3 xl:h-40 w-full'>
-        <div className='h-24 md:h-28'>
-          <div className='text-black1 text-base font-medium'>{title}</div>
-          <div className='text-gray1 text-sm leading-4 '>{descr}</div>
+      <div className='flex justify-around  flex-col p-3 xl:h-40 w-full box-border'>
+        <div className='h-24 md:h-28 overflow-hidden '>
+          <div className='text-black1 text-base font-medium  max-w-full  '>
+            {title}
+          </div>
+          <div className='text-gray1 text-sm leading-4 max-w-full  '>
+            <p className=' overflow-ellipsis overflow-hidden  max-w-full'>
+              {descr}
+            </p>
+          </div>
         </div>
         <div className='flex flex-row w-full justify-between'>
           <div className='whitespace-nowrap text-black1 text-base md:text-lg font-medium'>

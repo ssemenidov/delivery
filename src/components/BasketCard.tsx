@@ -15,7 +15,7 @@ function BasketCard({id, title, descr, url, price, mass}: CardType) {
         <div
           className='min-w-full w-24 h-24  md:w-28 md:h-28  lg:w-40 lg:h-40 bg-center bg-no-repeat bg-cover rounded-l-lg'
           style={{
-            backgroundImage: `url(${url})`,
+            backgroundImage: `url(https://eda.yandex${url})`,
           }}
         ></div>
       </div>
