@@ -4,7 +4,7 @@ export interface CardType {
   descr: string;
   url: string;
   price: number;
-  mass: number;
+  mass: string;
 }
 export interface AddressType {
   address: string;

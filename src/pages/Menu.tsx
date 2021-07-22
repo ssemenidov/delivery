@@ -21,22 +21,14 @@ const cat = [
   'высший рейтинг',
 ];
 const cat_food = [
-  {title: 'Суши и роллы	', url: sushi},
-  {title: 'Бургеры, картошка ', url: burger},
+  {title: 'Суши, роллы и поке', url: sushi},
+  {title: 'Бургеры, картошка, фастфуд ', url: burger},
   {title: 'Пицца', url: pizza},
-  {title: 'Суши и роллы	', url: sushi},
-  {title: 'Бургеры, картошка ', url: burger},
-  {title: 'Пицца', url: pizza},
-  {title: 'Суши и роллы	', url: sushi},
-  {title: 'Бургеры, картошка ', url: burger},
-  {title: 'Пицца', url: pizza},
-  {title: 'Суши и роллы	', url: sushi},
-  {title: 'Бургеры, картошка ', url: burger},
-  {title: 'Пицца', url: pizza},
-  // {title: 'Супы', url: ''},
-  // {title: 'Салаты', url: ''},
-  // {title: 'десерты', url: ''},
-  // {title: 'напитки', url: ''},
+  {title: 'Паста и удон', url: sushi},
+  {title: 'Супы ', url: burger},
+  {title: 'Салаты', url: pizza},
+  {title: 'Десерты	', url: sushi},
+  {title: 'Напитки', url: burger},
 ];
 
 function Menu() {

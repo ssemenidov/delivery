@@ -59,7 +59,7 @@ const getMenu = async (slug, lat, lang) => {
   const menuItems = await menuData.map((cat, index) => {
     // console.log(cat);
     const dishes = cat.items.map((dish) => ({
-      id: dish.id,
+      id: dish.id.toString(),
       title: dish.name,
       price: dish.price,
       descr: dish.description,
