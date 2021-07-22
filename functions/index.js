@@ -13,7 +13,7 @@ app.get('/', (req, res) => res.status(200).send('hello world'));
 
 app.get('/food', async (req, res) => {
   console.log(req.query);
-  const response = await axios.get(
+  const catalogRes = await axios.get(
     // eslint-disable-next-line max-len
     'https://eda.yandex/api/v2/catalog',
     {
@@ -21,17 +21,29 @@ app.get('/food', async (req, res) => {
         latitude: req.query.lat,
         longitude: req.query.lang,
       },
-    },
-    {timeout: 1}
+    }
   );
-  const data = await response.data.payload.foundPlaces;
-  const slug = await data.map((value) => value.place.slug);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 1);
+  const slug = await catalogData.map((value) => value.place.slug);
   await console.log(slug);
+  slug.forEach(async (element) => {
+    const menuRes = await axios.get(
+      // eslint-disable-next-line max-len
+      `https://eda.yandex/api/v2/catalog/${element}/menu`,
+      {
+        params: {
+          latitude: req.query.lat,
+          longitude: req.query.lang,
+        },
+      }
+    );
+    const menuData = await menuRes.data.payload.categories;
+    await console.log(menuData);
+  });
 
-  const str = await JSON.stringify(data);
-
-  console.log(str.slice(0, 10));
-  await res.status(200).send(str.slice(0, 10));
+  const str = await JSON.stringify(catalogData);
+  // console.log(str);
+  await res.status(200).send(str);
 });
 // - Listen commands
 exports.api = functions.https.onRequest(app);
