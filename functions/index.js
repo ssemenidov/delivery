@@ -16,13 +16,11 @@ app.get('/food', async (req, res) => {
   const lat = req.query.lat;
   const lang = req.query.lang;
   const slug = await getCatalog(lat, lang);
-  console.log(slug);
-  const ResItems = await getAllMenu(slug, lat, lang);
+  // console.log(slug);
+  const ResItems = await getAllMenuDishes(slug, lat, lang);
+  // console.log(ResItems);
 
-  // // console.log(str);
-  const merged = ResItems.flat(1);
-  await console.log(JSON.stringify(merged));
-  res.status(200).send(merged);
+  res.status(200).send('ok');
 });
 
 const getCatalog = async (lat, lang) => {
@@ -41,8 +39,28 @@ const getCatalog = async (lat, lang) => {
   // await console.log(slug);
   return slug;
 };
-const getAllMenu = async (slug, lat, lang) => {
-  return Promise.all(slug.map((element) => getMenu(element, lat, lang)));
+const getAllMenuDishes = async (slug, lat, lang) => {
+  return (
+    await Promise.all(slug.map((element) => getMenuDishes(element, lat, lang)))
+  ).flat(1);
+};
+// eslint-disable-next-line no-unused-vars
+const getAllMenuCats = async (slug, lat, lang) => {
+  return Promise.all(slug.map((element) => getMenuCats(element, lat, lang)));
+};
+const getMenuDishes = async (slug, lat, lang) => {
+  const menuData = await getMenu(slug, lat, lang);
+  const menuDishes = getDishes(menuData);
+  const menuDishesM = menuDishes.flat(1);
+
+  return menuDishesM;
+};
+const getMenuCats = async (slug, lat, lang) => {
+  const menuData = await getMenu(slug, lat, lang);
+
+  const menuCats = await getCats(menuData);
+  const menuCatsM = await menuCats.flat(1);
+  return menuCatsM;
 };
 const getMenu = async (slug, lat, lang) => {
   const menuRes = await axios.get(
@@ -56,9 +74,18 @@ const getMenu = async (slug, lat, lang) => {
     }
   );
   const menuData = await menuRes.data.payload.categories;
-  const menuItems = await menuData.map((cat, index) => {
-    // console.log(cat);
-    const dishes = cat.items.map((dish) => ({
+  return menuData;
+};
+const getCats = (menuData) => {
+  const menuCat = menuData.map((value) => {
+    // console.log(value);
+    return value.name;
+  });
+  return menuCat;
+};
+const getDishes = (menuData) => {
+  const allDishes = menuData.map((cat, index) => {
+    const catDishes = cat.items.map((dish) => ({
       id: dish.id.toString(),
       title: dish.name,
       price: dish.price,
@@ -68,11 +95,10 @@ const getMenu = async (slug, lat, lang) => {
     }));
 
     // console.log(CatItem);
-    return dishes;
+    return {cat: cat.name, items: catDishes};
   });
-  // await console.log(menuItems);
-  const merged = await menuItems.flat(1);
-  return merged;
+  // console.log(allDishes);
+  return allDishes;
 };
 
 // - Listen commands

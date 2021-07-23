@@ -55,7 +55,7 @@ function Menu() {
         },
       });
       console.log(res.data);
-      dispatch(SetMenu(res.data));
+      //dispatch(SetMenu(res.data));
     }
     getCatalog();
   }, []);
