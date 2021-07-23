@@ -27,14 +27,14 @@ const cat = [
   'высший рейтинг',
 ];
 const cat_food = [
-  {title: 'Суши, роллы и поке', url: sushi},
-  {title: 'Бургеры, картошка, фастфуд ', url: burger},
-  {title: 'Пицца', url: pizza},
-  {title: 'Паста и удон', url: pasta},
-  {title: 'Супы ', url: soup},
-  {title: 'Салаты', url: salad},
-  {title: 'Десерты	', url: sweet},
-  {title: 'Напитки', url: drink},
+  {title: 'Суши, роллы и поке', url: sushi, id: 'sushi'},
+  {title: 'Бургеры, картошка, фастфуд ', url: burger, id: 'burger'},
+  {title: 'Пицца', url: pizza, id: 'pizza'},
+  {title: 'Паста и удон', url: pasta, id: 'pasta'},
+  {title: 'Супы ', url: soup, id: 'soup'},
+  {title: 'Салаты', url: salad, id: 'salad'},
+  {title: 'Десерты	', url: sweet, id: 'sweet'},
+  {title: 'Напитки', url: drink, id: 'drink'},
 ];
 
 function Menu() {
@@ -57,8 +57,24 @@ function Menu() {
       console.log(res.data);
       //dispatch(SetMenu(res.data));
     }
-    getCatalog();
+    getCatalog().then(() => setCurrentFood(0));
   }, []);
+  useEffect(() => {
+    const cat = cat_food[currentFood].id;
+    console.log(cat);
+    async function getMenu() {
+      const res = await axios({
+        method: 'get',
+        url: `/food/`,
+        params: {
+          cat: cat,
+        },
+      });
+      console.log(res.data);
+      dispatch(SetMenu(res.data));
+    }
+    getMenu();
+  }, [currentFood]);
   const CatClick = (index: number) => {
     setCurrentCat(index);
   };

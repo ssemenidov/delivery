@@ -17,12 +17,14 @@ app.get('/data', async (req, res) => {
   const lang = req.query.lang;
   const data = await getData(lat, lang);
   parseData(data);
-  res.status(200).send(data);
+  res.status(200).send('ok');
 });
-app.get('/food/:cat', (req, res) => {
+app.get('/food/', (req, res) => {
   const cat = req.query.cat;
-  const dishes = model.find((value) => value.name === cat);
-  return dishes;
+  console.log(cat);
+  const dishes = model.find((value) => value.name === cat).items;
+  console.log(dishes);
+  res.status(200).send(dishes);
 });
 
 const model = [
@@ -86,7 +88,7 @@ const parseData = (data) => {
       }
     });
   });
-  console.log(model);
+  // console.log(model);
 };
 const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
@@ -107,7 +109,7 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 2);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 10);
   const slug = await catalogData.map((value) => value.place.slug);
   // await console.log(slug);
   return slug;
