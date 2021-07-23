@@ -13,6 +13,7 @@
     "indent": [2, 2],
     "semi": [2, "always"],
     "max-len": ["error", {"code": 80}],
+    "linebreak-style": ["error", "windows"],
     "comma-dangle": [
       1,
       {

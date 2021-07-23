@@ -2,6 +2,12 @@ import React, {useEffect, useState} from 'react';
 import burger from '../assets/img/burger.png';
 import sushi from '../assets/img/sushi.png';
 import pizza from '../assets/img/pizza.png';
+import pasta from '../assets/img/pasta.png';
+import soup from '../assets/img/soup.png';
+import sweet from '../assets/img/sweet.png';
+
+import salad from '../assets/img/salad.png';
+import drink from '../assets/img/drink.png';
 
 import {CardType, StateType} from '../interfaces';
 import Card from '../components/Card';
@@ -24,11 +30,11 @@ const cat_food = [
   {title: 'Суши, роллы и поке', url: sushi},
   {title: 'Бургеры, картошка, фастфуд ', url: burger},
   {title: 'Пицца', url: pizza},
-  {title: 'Паста и удон', url: sushi},
-  {title: 'Супы ', url: burger},
-  {title: 'Салаты', url: pizza},
-  {title: 'Десерты	', url: sushi},
-  {title: 'Напитки', url: burger},
+  {title: 'Паста и удон', url: pasta},
+  {title: 'Супы ', url: soup},
+  {title: 'Салаты', url: salad},
+  {title: 'Десерты	', url: sweet},
+  {title: 'Напитки', url: drink},
 ];
 
 function Menu() {
@@ -39,7 +45,7 @@ function Menu() {
   const [currentCat, setCurrentCat] = useState(0);
   const [currentFood, setCurrentFood] = useState(0);
   useEffect(() => {
-    const getCatalog = async () => {
+    async function getCatalog() {
       const res = await axios({
         method: 'get',
         url: '/food',
@@ -50,7 +56,7 @@ function Menu() {
       });
       console.log(res.data);
       dispatch(SetMenu(res.data));
-    };
+    }
     getCatalog();
   }, []);
   const CatClick = (index: number) => {
