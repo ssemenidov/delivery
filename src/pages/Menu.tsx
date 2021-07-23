@@ -48,7 +48,7 @@ function Menu() {
     async function getCatalog() {
       const res = await axios({
         method: 'get',
-        url: '/food',
+        url: '/data',
         params: {
           lat: address.lat,
           lang: address.lang,

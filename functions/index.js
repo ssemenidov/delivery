@@ -11,18 +11,91 @@ app.use(express.json());
 // - API routes
 app.get('/', (req, res) => res.status(200).send('hello world'));
 
-app.get('/food', async (req, res) => {
+app.get('/data', async (req, res) => {
   console.log(req.query);
   const lat = req.query.lat;
   const lang = req.query.lang;
+  const data = await getData(lat, lang);
+  parseData(data);
+  res.status(200).send(data);
+});
+app.get('/food/:cat', (req, res) => {
+  const cat = req.query.cat;
+  const dishes = model.find((value) => value.name === cat);
+  return dishes;
+});
+
+const model = [
+  {
+    name: 'sushi',
+    keyWords: ['Роллы'],
+    items: [],
+  },
+  {
+    name: 'burger',
+    keyWords: ['Картофель', 'Картошка', 'Бургеры', 'Бургеры из говядины'],
+    items: [],
+  },
+  {
+    name: 'pizza',
+    keyWords: ['Пицца'],
+    items: [],
+  },
+  {
+    name: 'pasta',
+    keyWords: ['Паста', 'Вок'],
+    items: [],
+  },
+  {
+    name: 'soup',
+    keyWords: ['Супы'],
+    items: [],
+  },
+  {
+    name: 'salad',
+    keyWords: ['Салаты'],
+    items: [],
+  },
+  {
+    name: 'sweet',
+    keyWords: ['Десерты'],
+    items: [],
+  },
+  {
+    name: 'drink',
+    keyWords: [
+      'Напитки',
+      'Горячие напитки',
+      'Вода, напитки',
+      'Морсы, кисели, компоты',
+    ],
+    items: [],
+  },
+  {
+    name: '',
+    keyWords: [''],
+    items: [],
+  },
+];
+const parseData = (data) => {
+  data.forEach((dataCat) => {
+    model.forEach((modelCat) => {
+      if (modelCat.keyWords.includes(dataCat.cat)) {
+        modelCat.items = [...modelCat.items, ...dataCat.items];
+        // console.log(dataCat.cat, modelCat.keyWords);
+      }
+    });
+  });
+  console.log(model);
+};
+const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
   // console.log(slug);
   const ResItems = await getAllMenuDishes(slug, lat, lang);
+
   // console.log(ResItems);
-
-  res.status(200).send('ok');
-});
-
+  return ResItems;
+};
 const getCatalog = async (lat, lang) => {
   const catalogRes = await axios.get(
     // eslint-disable-next-line max-len
