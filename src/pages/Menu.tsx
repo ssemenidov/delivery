@@ -35,6 +35,7 @@ const cat_food = [
   {title: 'Салаты', url: salad, id: 'salad'},
   {title: 'Десерты	', url: sweet, id: 'sweet'},
   {title: 'Напитки', url: drink, id: 'drink'},
+
 ];
 
 function Menu() {
@@ -43,7 +44,7 @@ function Menu() {
   const menu = useSelector((state: StateType) => state.menu.menu);
   const address = useSelector((state: StateType) => state.address);
   const [currentCat, setCurrentCat] = useState(0);
-  const [currentFood, setCurrentFood] = useState(0);
+  const [currentFood, setCurrentFood] = useState(1);
   useEffect(() => {
     async function getCatalog() {
       const res = await axios({
@@ -55,9 +56,9 @@ function Menu() {
         },
       });
       console.log(res.data);
-      //dispatch(SetMenu(res.data));
+      setCurrentFood(0);
     }
-    getCatalog().then(() => setCurrentFood(0));
+    getCatalog();
   }, []);
   useEffect(() => {
     const cat = cat_food[currentFood].id;

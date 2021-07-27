@@ -4,6 +4,8 @@ import {CardType} from '../interfaces';
 import {AddCard, DeleteCard} from '../redux/actions';
 
 function Card({id, title, descr, url, price, mass}: CardType) {
+  console.log(url);
+
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
   const handleClick = () => {

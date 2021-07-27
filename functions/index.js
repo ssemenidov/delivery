@@ -17,13 +17,14 @@ app.get('/data', async (req, res) => {
   const lang = req.query.lang;
   const data = await getData(lat, lang);
   parseData(data);
+
   res.status(200).send('ok');
 });
 app.get('/food/', (req, res) => {
   const cat = req.query.cat;
   console.log(cat);
   const dishes = model.find((value) => value.name === cat).items;
-  console.log(dishes);
+  // console.log(dishes);
   res.status(200).send(dishes);
 });
 
@@ -80,7 +81,9 @@ const model = [
   },
 ];
 const parseData = (data) => {
+  console.log(data.length);
   data.forEach((dataCat) => {
+    // console.log(dataCat.cat);
     model.forEach((modelCat) => {
       if (modelCat.keyWords.includes(dataCat.cat)) {
         modelCat.items = [...modelCat.items, ...dataCat.items];
@@ -111,7 +114,7 @@ const getCatalog = async (lat, lang) => {
   );
   const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 10);
   const slug = await catalogData.map((value) => value.place.slug);
-  // await console.log(slug);
+  // console.log(slug);
   return slug;
 };
 const getAllMenuDishes = async (slug, lat, lang) => {
@@ -166,7 +169,9 @@ const getDishes = (menuData) => {
       price: dish.price,
       descr: dish.description,
       mass: dish.weight,
-      url: dish.picture ? dish.picture.uri.replace('{w}x{h}', '200x200') : '',
+      url: dish.picture ?
+        dish.picture.uri.replace('{w}x{h}', '200x200') :
+        dish.picture,
     }));
 
     // console.log(CatItem);
