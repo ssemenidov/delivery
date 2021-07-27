@@ -31,27 +31,49 @@ app.get('/food/', (req, res) => {
 const model = [
   {
     name: 'sushi',
-    keyWords: ['Роллы'],
+    keyWords: [
+      'Роллы',
+      'Суши',
+      'Горячие роллы',
+      'Закрытые роллы',
+      'Запечённые роллы',
+      'Поке'
+    ],
     items: [],
   },
   {
     name: 'burger',
-    keyWords: ['Картофель', 'Картошка', 'Бургеры', 'Бургеры из говядины'],
+    keyWords: [
+      'Картошка',
+      'Бургеры',
+      'Бургеры из говядины',
+      'Сэндвичи',
+      'Бургеры из курицы и рыбы',
+      'Картошки-фри',
+      'Куриные ножки',
+      'Куриные крылышки',
+      'Чикенсы'
+    ],
     items: [],
   },
   {
     name: 'pizza',
-    keyWords: ['Пицца'],
+    keyWords: ['Пицца', 'Закрытая пицца'],
     items: [],
   },
   {
     name: 'pasta',
-    keyWords: ['Паста', 'Вок'],
+    keyWords: [
+      'Паста',
+      'Вок',
+      'Лапша',
+      'Вьетнамская лапша'
+    ],
     items: [],
   },
   {
     name: 'soup',
-    keyWords: ['Супы'],
+    keyWords: ['Супы', 'Рамен и мисо'],
     items: [],
   },
   {
@@ -71,6 +93,9 @@ const model = [
       'Горячие напитки',
       'Вода, напитки',
       'Морсы, кисели, компоты',
+      'Молочные коктейли',
+      'Милкшейки',
+      'Чай, кофе'
     ],
     items: [],
   },
@@ -95,7 +120,7 @@ const parseData = (data) => {
 };
 const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
-  // console.log(slug);
+  console.log(slug);
   const ResItems = await getAllMenuDishes(slug, lat, lang);
 
   // console.log(ResItems);
@@ -117,6 +142,7 @@ const getCatalog = async (lat, lang) => {
   // console.log(slug);
   return slug;
 };
+// eslint-disable-next-line no-unused-vars
 const getAllMenuDishes = async (slug, lat, lang) => {
   return (
     await Promise.all(slug.map((element) => getMenuDishes(element, lat, lang)))
@@ -170,8 +196,8 @@ const getDishes = (menuData) => {
       descr: dish.description,
       mass: dish.weight,
       url: dish.picture ?
-        dish.picture.uri.replace('{w}x{h}', '200x200') :
-        dish.picture,
+        'https://eda.yandex'+dish.picture.uri.replace('{w}x{h}', '200x200') :
+        null,
     }));
 
     // console.log(CatItem);
