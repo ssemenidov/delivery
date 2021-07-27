@@ -126,7 +126,7 @@ function Menu() {
       <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
         {menu.map((value, index) => (
           <div className='' key={index}>
-            <Card {...value}></Card>
+            <Card {...value} url={value.url ? value.url : cat_food[currentFood].url}></Card>
           </div>
         ))}
       </div>
