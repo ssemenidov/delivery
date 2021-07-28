@@ -1,7 +1,7 @@
 const axios = require('axios');
 const {model}=require('../models/model');
-exports.parseData = (data) => {
-  console.log(data.length);
+const parseData = (data) => {
+  // console.log(data.length);
   data.forEach((dataCat) => {
     // console.log(dataCat.cat);
     model.forEach((modelCat) => {
@@ -13,7 +13,7 @@ exports.parseData = (data) => {
   });
   // console.log(model);
 };
-exports.getData = async (lat, lang) => {
+const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
   console.log(slug);
   const ResItems = await getAllMenuDishes(slug, lat, lang);
@@ -32,7 +32,7 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 30);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 50);
   const slug = catalogData
     .filter((value)=>value.place.business=='restaurant')
     .map((value) => value.place.slug);
@@ -49,7 +49,9 @@ const getAllMenuCats = async (slug, lat, lang) => {
   return Promise.all(slug.map((element) => getMenuCats(element, lat, lang)));
 };
 const getMenuDishes = async (slug, lat, lang) => {
+  console.log(slug);
   const menuData = await getMenu(slug, lat, lang);
+  // console.log(menuData);
   const menuDishes = getDishes(menuData);
   const menuDishesM = menuDishes.flat(1);
 
@@ -59,6 +61,7 @@ const getMenuCats = async (slug, lat, lang) => {
   const menuData = await getMenu(slug, lat, lang);
 
   const menuCats = await getCats(menuData);
+
   const menuCatsM = await menuCats.flat(1);
   return menuCatsM;
 };
@@ -102,3 +105,8 @@ const getDishes = (menuData) => {
   // console.log(allDishes);
   return allDishes;
 };
+
+exports.getCatalog=getCatalog;
+exports.parseData=parseData;
+exports.getData=getData;
+exports.getMenuDishes=getMenuDishes;

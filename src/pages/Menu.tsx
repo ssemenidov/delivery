@@ -55,10 +55,26 @@ function Menu() {
           lang: address.lang,
         },
       });
-      console.log(res.data);
-      setCurrentFood(0);
+      const slug=res.data
+    
+      
+      slug.forEach(async (element:string) => {
+        //console.log(element);
+        const res = await axios({
+          method: 'get',
+          url: '/menu',
+          params: {
+            lat: address.lat,
+            lang: address.lang,
+            slug: element
+          },
+        });
+        //console.log(res.data);
+        
+      });
     }
-    getCatalog();
+ getCatalog();
+
   }, []);
   useEffect(() => {
     const cat = cat_food[currentFood].id;
