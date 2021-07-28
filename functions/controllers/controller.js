@@ -32,7 +32,7 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 20);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 30);
   const slug = catalogData
     .filter((value)=>value.place.business=='restaurant')
     .map((value) => value.place.slug);
