@@ -137,9 +137,10 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 10);
-  const slug = await catalogData.map((value) => value.place.slug);
-  // console.log(slug);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 20);
+  const slug = catalogData
+    .filter((value)=>value.place.business=='restaurant')
+    .map((value) => value.place.slug);
   return slug;
 };
 // eslint-disable-next-line no-unused-vars
