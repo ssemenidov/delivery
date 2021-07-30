@@ -35,7 +35,6 @@ const cat_food = [
   {title: 'Салаты', url: salad, id: 'salad'},
   {title: 'Десерты	', url: sweet, id: 'sweet'},
   {title: 'Напитки', url: drink, id: 'drink'},
-
 ];
 
 function Menu() {
@@ -55,43 +54,39 @@ function Menu() {
           lang: address.lang,
         },
       });
-      const slug=res.data
-    
-      
-      slug.forEach(async (element:string) => {
-        //console.log(element);
+      const slug = res.data;
+
+      slug.forEach(async (element: string, index: number) => {
         const res = await axios({
           method: 'get',
           url: '/menu',
           params: {
             lat: address.lat,
             lang: address.lang,
-            slug: element
+            slug: element,
           },
         });
-        //console.log(res.data);
-        
+        console.log(res.data);
       });
     }
- getCatalog();
-
+    getCatalog();
   }, []);
   useEffect(() => {
     const cat = cat_food[currentFood].id;
-    console.log(cat);
-    async function getMenu() {
-      const res = await axios({
-        method: 'get',
-        url: `/food/`,
-        params: {
-          cat: cat,
-        },
-      });
-      console.log(res.data);
-      dispatch(SetMenu(res.data));
-    }
-    getMenu();
+    getMenu(cat);
   }, [currentFood]);
+  async function getMenu(cat: string) {
+    const res = await axios({
+      method: 'get',
+      url: `/food`,
+      params: {
+        cat: cat,
+      },
+    });
+    console.log(res.data);
+    dispatch(SetMenu(res.data));
+  }
+
   const CatClick = (index: number) => {
     setCurrentCat(index);
   };
@@ -142,7 +137,10 @@ function Menu() {
       <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
         {menu.map((value, index) => (
           <div className='' key={index}>
-            <Card {...value} url={value.url ? value.url : cat_food[currentFood].url}></Card>
+            <Card
+              {...value}
+              url={value.url ? value.url : cat_food[currentFood].url}
+            ></Card>
           </div>
         ))}
       </div>

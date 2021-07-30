@@ -19,22 +19,6 @@ const initialState: MenuType = {
       price: 0,
       mass: '',
     },
-    {
-      id: '3',
-      title: '',
-      descr: '',
-      url: '',
-      price: 0,
-      mass: '',
-    },
-    {
-      id: '4',
-      title: '',
-      descr: '',
-      url: '',
-      price: 0,
-      mass: '',
-    },
   ],
 };
 export const menuReducer = (state = initialState, action: ActionMenu) => {

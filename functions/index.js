@@ -1,9 +1,13 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
-const {model}=require('./models/model');
+const {model} = require('./models/model');
 // eslint-disable-next-line max-len
-const {getCatalog, getMenuDishes, parseData}=require('./controllers/controller');
+const {
+  getCatalog,
+  getMenuDishes,
+  parseData,
+} = require('./controllers/controller');
 // -App config
 const app = express();
 // -Middlewares
@@ -24,20 +28,18 @@ app.get('/menu', async (req, res) => {
   const lat = req.query.lat;
   const lang = req.query.lang;
   const slug = req.query.slug;
-  const dishes=await getMenuDishes(slug, lat, lang);
+  const dishes = await getMenuDishes(slug, lat, lang);
   // console.log(dishes);
   parseData(dishes);
-  res.status(200).send('ok');
+  res.status(200).send(dishes);
 });
 app.get('/food', (req, res) => {
   const cat = req.query.cat;
   console.log(cat);
-  const dishes = model.find((value) => value.name === cat).items;
+  const dishes = model.find((value) => value.name === cat).data;
   // console.log(dishes);
   res.status(200).send(dishes);
 });
 
-
 // - Listen commands
 exports.api = functions.https.onRequest(app);
-

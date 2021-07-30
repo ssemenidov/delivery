@@ -1,4 +1,4 @@
-exports.model=[
+exports.model = [
   {
     name: 'sushi',
     keyWords: [
@@ -7,58 +7,58 @@ exports.model=[
       'Горячие роллы',
       'Закрытые роллы',
       'Запечённые роллы',
-      'Поке'
+      'Поке',
     ],
+    data: [],
     items: [
       {
         title: 'Поке с лососем',
-        items: []
+        items: [],
       },
       {
         title: 'Поке с тунцом',
-        items: []
+        items: [],
       },
       {
         title: 'Поке с креветками',
-        items: []
+        items: [],
       },
       {
         title: 'Поке с курицей терияки',
-        items: []
+        items: [],
       },
       {
         title: 'Калифорния с лососем',
-        items: []
+        items: [],
       },
       {
         title: 'Калифорния с крабом',
-        items: []
+        items: [],
       },
       {
         title: 'Канада',
-        items: []
+        items: [],
       },
       {
         title: 'Филадельфия',
-        items: []
+        items: [],
       },
       {
         title: 'Суши с угрем',
-        items: []
+        items: [],
       },
       {
         title: 'Суши с тунцом',
-        items: []
+        items: [],
       },
       {
         title: 'Суши с креветкой',
-        items: []
+        items: [],
       },
       {
         title: 'Суши с лососем',
-        items: []
+        items: [],
       },
-
     ],
   },
   {
@@ -72,231 +72,231 @@ exports.model=[
       'Картошки-фри',
       'Куриные ножки',
       'Куриные крылышки',
-      'Чикенсы'
+      'Чикенсы',
     ],
+    data: [],
     items: [
       {
         title: 'Картофель фри стандарт',
-        items: []
+        items: [],
       },
       {
         title: 'Картофель фри брольшой',
-        items: []
+        items: [],
       },
       {
         title: 'Картофель фри По-деревенски',
-        items: []
+        items: [],
       },
       {
         title: 'Гамбургер',
-        items: []
+        items: [],
       },
       {
         title: 'Чизбургер',
-        items: []
+        items: [],
       },
       {
         title: 'Чикенбургер',
-        items: []
+        items: [],
       },
       {
         title: 'Чикенчизбургер',
-        items: []
+        items: [],
       },
       {
         title: 'Бургер блю чиз',
-        items: []
+        items: [],
       },
       {
         title: 'Нагеттсы',
-        items: []
+        items: [],
       },
       {
         title: 'биг мак/биг кинг',
-        items: []
+        items: [],
       },
       {
         title: 'биг  тейсти джуниор/воппер',
-        items: []
+        items: [],
       },
       {
         title: 'шримп ролл',
-        items: []
+        items: [],
       },
       {
         title: 'фиш ролл',
-        items: []
+        items: [],
       },
     ],
   },
   {
     name: 'pizza',
+    data: [],
     keyWords: ['Пицца', 'Закрытая пицца'],
+
     items: [
       {
         title: 'Маргарита',
-        items: []
+        items: [],
       },
       {
         title: 'Пеперрони',
-        items: []
+        items: [],
       },
       {
         title: '4 Сыра',
-        items: []
+        items: [],
       },
       {
         title: 'Мясная',
-        items: []
+        items: [],
       },
       {
         title: 'Ветчина и грибы',
-        items: []
+        items: [],
       },
       {
         title: 'Грибная',
-        items: []
+        items: [],
       },
       {
         title: 'Гавайская',
-        items: []
+        items: [],
       },
       {
         title: 'Вегетарианская',
-        items: []
+        items: [],
       },
       {
         title: 'С морепродуктами',
-        items: []
+        items: [],
       },
       {
         title: 'Курица барбекю',
-        items: []
+        items: [],
       },
     ],
   },
   {
     name: 'pasta',
-    keyWords: [
-      'Паста',
-      'Вок',
-      'Лапша',
-      'Вьетнамская лапша'
-    ],
+    data: [],
+    keyWords: ['Паста', 'Вок', 'Лапша', 'Вьетнамская лапша'],
     items: [
       {
         title: 'Лапша с курицей',
-        items: []
+        items: [],
       },
       {
         title: 'Лапша с грибами',
-        items: []
+        items: [],
       },
       {
         title: 'Лапша со свининой',
-        items: []
+        items: [],
       },
       {
         title: 'Паста карбонара',
-        items: []
+        items: [],
       },
       {
         title: 'Паста болоньезе',
-        items: []
+        items: [],
       },
       {
         title: 'Паста с грибами',
-        items: []
+        items: [],
       },
       {
         title: 'Паста с томатами',
-        items: []
+        items: [],
       },
-
     ],
   },
   {
     name: 'soup',
+    data: [],
     keyWords: ['Супы', 'Рамен и мисо'],
     items: [
       {
         title: 'Том-ям',
-        items: []
+        items: [],
       },
       {
         title: 'Фо-бо',
-        items: []
+        items: [],
       },
       {
         title: 'Борщ',
-        items: []
+        items: [],
       },
       {
         title: 'Щи',
-        items: []
+        items: [],
       },
       {
         title: 'Тыквенный',
-        items: []
+        items: [],
       },
       {
         title: 'Крем-суп из грибов',
-        items: []
+        items: [],
       },
-
-
     ],
   },
   {
     name: 'salad',
+    data: [],
     keyWords: ['Салаты'],
     items: [
       {
         title: 'Цезарь',
-        items: []
+        items: [],
       },
       {
         title: 'Греческий',
-        items: []
+        items: [],
       },
       {
         title: 'Мимоза',
-        items: []
+        items: [],
       },
       {
         title: 'Огурцы и помидоры',
-        items: []
+        items: [],
       },
     ],
   },
   {
     name: 'sweet',
+    data: [],
     keyWords: ['Десерты'],
     items: [
       {
         title: 'наполеон',
-        items: []
+        items: [],
       },
       {
         title: 'медовик',
-        items: []
+        items: [],
       },
       {
         title: 'чизкейк',
-        items: []
+        items: [],
       },
       {
         title: 'шоколадный торт',
-        items: []
+        items: [],
       },
       {
         title: 'Маффин',
-        items: []
+        items: [],
       },
     ],
   },
   {
     name: 'drink',
+    data: [],
     keyWords: [
       'Напитки',
       'Горячие напитки',
@@ -304,49 +304,59 @@ exports.model=[
       'Морсы, кисели, компоты',
       'Молочные коктейли',
       'Милкшейки',
-      'Чай, кофе'
+      'Чай, кофе',
     ],
     items: [
       {
         title: 'фанта',
-        items: []
+        keyWords: ['Fanta', 'fanta', 'Фанта', 'фанта'],
+        items: [],
       },
       {
         title: 'кола',
-        items: []
+        keyWords: ['Coca-Cola', 'Кока-Кола'],
+        items: [],
       },
       {
         title: 'спрайт',
-        items: []
+        keyWords: ['Sprite', 'Спрайт'],
+        items: [],
       },
       {
         title: 'липтон',
-        items: []
+        keyWords: ['Lipton', 'Липтон'],
+        items: [],
       },
       {
         title: 'Миринда',
-        items: []
+        keyWords: ['Mirinda', 'Миринда'],
+        items: [],
       },
       {
         title: 'Пепси',
-        items: []
+        keyWords: ['Pepsi', 'Пепси'],
+        items: [],
       },
       {
         title: '7ап',
-        items: []
+        keyWords: ['7Up', '7ап'],
+        items: [],
       },
       {
         title: 'Nestea',
-        items: []
+        keyWords: ['Nestea', 'Нестиа'],
+        items: [],
       },
       {
         title: ' Вода',
-        items: []
+        keyWords: ['Вода', 'Water'],
+        items: [],
       },
     ],
   },
   {
     name: '',
+    data: [],
     keyWords: [''],
     items: [],
   },

@@ -1,21 +1,36 @@
 const axios = require('axios');
-const {model}=require('../models/model');
+const {model} = require('../models/model');
+const parseCat = (cat, newData) => {
+  cat.data = [...cat.data, ...newData];
+  // newData.forEach((element) => {
+  //   let f = true;
+  //   cat.items.forEach((item) => {
+  //     if (item.title === element.title) {
+  //       f = false;
+  //       item.items.push(element);
+  //       item.url = element.url;
+  //       item.mass = element.mass;
+  //       item.price = element.price;
+  //       item.descr = element.descr;
+  //     }
+  //   });
+  //   if (f) cat.data.push(element);
+  // });
+};
 const parseData = (data) => {
-  // console.log(data.length);
   data.forEach((dataCat) => {
     // console.log(dataCat.cat);
     model.forEach((modelCat) => {
       if (modelCat.keyWords.includes(dataCat.cat)) {
-        modelCat.items = [...modelCat.items, ...dataCat.items];
-        // console.log(dataCat.cat, modelCat.keyWords);
+        parseCat(modelCat, dataCat.items);
       }
     });
   });
-  // console.log(model);
+  console.log(model);
 };
 const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
-  console.log(slug);
+  // console.log(slug);
   const ResItems = await getAllMenuDishes(slug, lat, lang);
 
   // console.log(ResItems);
@@ -32,9 +47,9 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 50);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 10);
   const slug = catalogData
-    .filter((value)=>value.place.business=='restaurant')
+    .filter((value) => value.place.business == 'restaurant')
     .map((value) => value.place.slug);
   return slug;
 };
@@ -94,9 +109,9 @@ const getDishes = (menuData) => {
       price: dish.price,
       descr: dish.description,
       mass: dish.weight,
-      url: dish.picture ?
-        'https://eda.yandex'+dish.picture.uri.replace('{w}x{h}', '200x200') :
-        null,
+      url: dish.picture
+        ? 'https://eda.yandex' + dish.picture.uri.replace('{w}x{h}', '200x200')
+        : null,
     }));
 
     // console.log(CatItem);
@@ -106,7 +121,8 @@ const getDishes = (menuData) => {
   return allDishes;
 };
 
-exports.getCatalog=getCatalog;
-exports.parseData=parseData;
-exports.getData=getData;
-exports.getMenuDishes=getMenuDishes;
+exports.getCatalog = getCatalog;
+exports.parseData = parseData;
+exports.getData = getData;
+exports.getMenuDishes = getMenuDishes;
+exports.parseCat = parseCat;
