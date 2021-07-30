@@ -1,4 +1,4 @@
-exports.model = [
+exports.modelTemplate = [
   {
     name: 'sushi',
     keyWords: [

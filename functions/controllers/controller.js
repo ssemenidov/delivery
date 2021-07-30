@@ -1,7 +1,22 @@
 const axios = require('axios');
-const {model} = require('../models/model');
+const fs = require('fs');
+const fileName = 'D://html-projects/delivery/functions/models/model.json';
+const model = require('../models/model.json');
+const {modelTemplate} = require('../models/modelTemplate');
+
+const modelInit = () => {
+  fs.writeFile(
+    fileName,
+    JSON.stringify(modelTemplate),
+    function writeJSON(err) {
+      if (err) return console.log(err, 1);
+      // console.log(JSON.stringify(model));
+      // console.log('writing to ' + fileName);
+    }
+  );
+};
 const parseCat = (cat, newData) => {
-  cat.data = [...cat.data, ...newData];
+  cat.items = [...cat.items, ...newData];
   // newData.forEach((element) => {
   //   let f = true;
   //   cat.items.forEach((item) => {
@@ -20,13 +35,17 @@ const parseCat = (cat, newData) => {
 const parseData = (data) => {
   data.forEach((dataCat) => {
     // console.log(dataCat.cat);
-    model.forEach((modelCat) => {
+    model.forEach((modelCat, index) => {
       if (modelCat.keyWords.includes(dataCat.cat)) {
-        parseCat(modelCat, dataCat.items);
+        model[index].items = [...modelCat.items, ...dataCat.items];
       }
     });
   });
-  console.log(model);
+  fs.writeFile(fileName, JSON.stringify(model), function writeJSON(err) {
+    if (err) return console.log(err, 1);
+    // console.log(JSON.stringify(model));
+    // console.log('writing to ' + fileName);
+  });
 };
 const getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
@@ -47,7 +66,7 @@ const getCatalog = async (lat, lang) => {
       },
     }
   );
-  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 10);
+  const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 20);
   const slug = catalogData
     .filter((value) => value.place.business == 'restaurant')
     .map((value) => value.place.slug);
@@ -64,7 +83,7 @@ const getAllMenuCats = async (slug, lat, lang) => {
   return Promise.all(slug.map((element) => getMenuCats(element, lat, lang)));
 };
 const getMenuDishes = async (slug, lat, lang) => {
-  console.log(slug);
+  // console.log(slug);
   const menuData = await getMenu(slug, lat, lang);
   // console.log(menuData);
   const menuDishes = getDishes(menuData);
@@ -126,3 +145,4 @@ exports.parseData = parseData;
 exports.getData = getData;
 exports.getMenuDishes = getMenuDishes;
 exports.parseCat = parseCat;
+exports.modelInit = modelInit;
