@@ -13,6 +13,7 @@
 /.firebase
 res.http
 ui-debug.log
+model1.json
 # misc
 .DS_Store
 .env.local

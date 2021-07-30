@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
-const fileName = 'D://html-projects/delivery/functions/models/model.json';
-const model = require('../models/model.json');
+const fileName = 'D://html-projects/delivery/functions/models/model1.json';
+const model = require('../models/model1.json');
 const {modelTemplate} = require('../models/modelTemplate');
 
 const modelInit = () => {

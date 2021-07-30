@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
-const fileName = './models/model.json';
+const fileName = './models/model1.json';
 const model = require(fileName);
 
 // eslint-disable-next-line max-len
