@@ -35,7 +35,6 @@ const cat_food = [
   {title: 'Салаты', url: salad, id: 'salad'},
   {title: 'Десерты	', url: sweet, id: 'sweet'},
   {title: 'Напитки', url: drink, id: 'drink'},
-
 ];
 
 function Menu() {
@@ -44,38 +43,43 @@ function Menu() {
   const menu = useSelector((state: StateType) => state.menu.menu);
   const address = useSelector((state: StateType) => state.address);
   const [currentCat, setCurrentCat] = useState(0);
-  const [currentFood, setCurrentFood] = useState(1);
+  const [currentFood, setCurrentFood] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    async function getCatalog() {
-      const res = await axios({
-        method: 'get',
-        url: '/data',
-        params: {
-          lat: address.lat,
-          lang: address.lang,
-        },
-      });
-      console.log(res.data);
-      setCurrentFood(0);
+    async function Mount() {
+      await getCatalog();
+      await UpdateMenu();
     }
-    getCatalog();
+    Mount();
   }, []);
   useEffect(() => {
-    const cat = cat_food[currentFood].id;
-    console.log(cat);
-    async function getMenu() {
-      const res = await axios({
-        method: 'get',
-        url: `/food/`,
-        params: {
-          cat: cat,
-        },
-      });
-      console.log(res.data);
-      dispatch(SetMenu(res.data));
-    }
-    getMenu();
+    UpdateMenu();
   }, [currentFood]);
+  const getCatalog = async () => {
+    const res = await axios({
+      method: 'get',
+      url: '/data',
+      params: {
+        lat: address.lat,
+        lang: address.lang,
+      },
+    });
+  };
+  const UpdateMenu = async () => {
+    setIsLoading(true);
+    const cat = cat_food[currentFood].id;
+    const res = await axios({
+      method: 'get',
+      url: `/food/`,
+      params: {
+        cat: cat,
+      },
+    });
+    //console.log(res.data);
+
+    await dispatch(SetMenu(res.data));
+    if (res.data.length !== 0) setIsLoading(false);
+  };
   const CatClick = (index: number) => {
     setCurrentCat(index);
   };
@@ -123,13 +127,22 @@ function Menu() {
           ))}
         </div>
       </div>
-      <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
-        {menu.map((value, index) => (
-          <div className='' key={index}>
-            <Card {...value} url={value.url ? value.url : cat_food[currentFood].url}></Card>
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className='flex items-center justify-center w-full'>
+          <div className=' animate-spin rounded-full h-16 w-16 border-b-4 border-l-4 border-orange1'></div>
+        </div>
+      ) : (
+        <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-11 xl:px-40 pb-20 overflow-y-auto'>
+          {menu.map((value, index) => (
+            <div className='' key={index}>
+              <Card
+                {...value}
+                url={value.url ? value.url : cat_food[currentFood].url}
+              ></Card>
+            </div>
+          ))}
+        </div>
+      )}
       <div className='px-4 md:px-11 flex   justify-center fixed  bottom-7 w-full'>
         <button
           className='btn-orange   py-3 text-sm box-border  md:max-w-md lg:max-w-lg'
