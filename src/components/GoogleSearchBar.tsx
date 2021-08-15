@@ -22,7 +22,7 @@ function GoogleSearchBar({address, setAddress, setlatLang}: SearchBarProps) {
       const results = await geocodeByAddress(value);
       const latLng = await getLatLng(results[0]);
       setlatLang({lat: latLng.lat.toString(), lang: latLng.lng.toString()});
-      console.log(results, latLng);
+      //console.log(results, latLng);
     } catch (e) {
       console.log(e);
     }
