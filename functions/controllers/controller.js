@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {model}=require('../models/model');
+const {model} = require('../models/model');
 exports.parseData = (data) => {
   console.log(data.length);
   data.forEach((dataCat) => {
@@ -13,6 +13,7 @@ exports.parseData = (data) => {
   });
   // console.log(model);
 };
+
 exports.getData = async (lat, lang) => {
   const slug = await getCatalog(lat, lang);
   console.log(slug);
@@ -34,9 +35,15 @@ const getCatalog = async (lat, lang) => {
   );
   const catalogData = await catalogRes.data.payload.foundPlaces.slice(0, 20);
   const slug = catalogData
-    .filter((value)=>value.place.business=='restaurant')
+    .filter((value) => value.place.business == 'restaurant')
     .map((value) => value.place.slug);
+  clearData();
   return slug;
+};
+const clearData = () => {
+  model.forEach((modelCat) => {
+    modelCat.items = [];
+  });
 };
 // eslint-disable-next-line no-unused-vars
 const getAllMenuDishes = async (slug, lat, lang) => {
@@ -91,9 +98,9 @@ const getDishes = (menuData) => {
       price: dish.price,
       descr: dish.description,
       mass: dish.weight,
-      url: dish.picture ?
-        'https://eda.yandex'+dish.picture.uri.replace('{w}x{h}', '200x200') :
-        null,
+      url: dish.picture
+        ? 'https://eda.yandex' + dish.picture.uri.replace('{w}x{h}', '200x200')
+        : null,
     }));
 
     // console.log(CatItem);
