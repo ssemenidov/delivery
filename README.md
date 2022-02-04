@@ -1,22 +1,24 @@
-frontend команды:
- 1. npm start - запускает локально
- 2. npm run emulate - запускает firebase эмулятор
- 3. npm run channel- деплоит на firebase канал
- 4. npm run deploy - деплоит на прод
- 
-backend команды:
- 1. npm run serve - запускает локально
- 2. npm run deploy - деплоит на firebase
-бэкенд хронится в папке /functions 
+# Delivery
+Delivery App connected with Yandex.Food API
 
-Интрукция по локальнному развертыванию:
-1. npm start
-2. открываем второй терминал
-3. cd functions
-4. npm run serve
+Live Website: https://delivery-d1.web.app/
+
+## Stack:
+- React
+- Redux
+- Typescipt
+- Firebase: hosting, functions
+- Node.js+Express
+- Tailwind
+
+# Screenshots:
+- Search
+- ![search](https://user-images.githubusercontent.com/50819295/152504021-10765f1a-2769-4944-bfb5-ca8528992865.png)
+- Menu
+![menu](https://user-images.githubusercontent.com/50819295/152504160-7df9f26b-192f-41a6-a9cb-de807d1cad45.png)
+- Basket
+![basket](https://user-images.githubusercontent.com/50819295/152504314-c9688939-0a57-483c-bb2f-b0b571d6fbb1.png)
 
 
- 
- 
  
   
